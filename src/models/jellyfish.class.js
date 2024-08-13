@@ -1,6 +1,6 @@
 class JellyFish extends DynamicObject {
-  height = 100;
-  width = 100;
+  height = 60;
+  width = 60;
 
   constructor() {
     super().loadImage("img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png");
