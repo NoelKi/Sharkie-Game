@@ -1,0 +1,1 @@
+class Pufferfish extends MovableObject {}
