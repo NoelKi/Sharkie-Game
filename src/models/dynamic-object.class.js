@@ -1,4 +1,4 @@
-class MovableObject {
+class DynamicObject {
   x;
   y;
   img;

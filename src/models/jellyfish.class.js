@@ -1,1 +1,1 @@
-class JellyFish extends MovableObject {}
+class JellyFish extends DynamicObject {}

@@ -1,1 +1,1 @@
-class Pufferfish extends MovableObject {}
+class Pufferfish extends DynamicObject {}

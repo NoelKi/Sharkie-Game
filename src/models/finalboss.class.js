@@ -1,1 +1,1 @@
-class Finalboss extends MovableObject {}
+class Finalboss extends DynamicObject {}

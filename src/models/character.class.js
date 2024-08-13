@@ -1,1 +1,1 @@
-class Character extends MovableObject {}
+class Character extends DynamicObject {}
