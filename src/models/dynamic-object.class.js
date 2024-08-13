@@ -2,8 +2,8 @@ class DynamicObject {
   x = 100;
   y = 100;
   img;
-  height = 250;
-  width = 250;
+  height = 150;
+  width = 150;
 
   loadImage(path) {
     this.img = new Image();

@@ -1,22 +1,44 @@
 class World {
   character = new Character();
-  enemies = new JellyFish();
-  ctx;
+  enemies = [new JellyFish(), new JellyFish()];
+  canvas;
+  barriers = [new Barrier()];
+  backgroundObjects = [
+    new BackgroundObjects("img/3. Background/Layers/5. Water/D.png", 0),
+    new BackgroundObjects("img/3. Background/Layers/3.Fondo 1/D.png", 0),
+    new BackgroundObjects("img/3. Background/Layers/4.Fondo 2/D.png", 0),
+    new BackgroundObjects("img/3. Background/Layers/2. Floor/D.png", 0),
+  ];
+  backgroundImage = ctx;
 
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
-
+    this.canvas = canvas;
     this.draw();
   }
 
   draw() {
-    this.ctx.drawImage(
-      this.character.img,
-      this.character.x,
-      this.character.y,
-      this.width,
-      this.height
-    );
-    console.log("hallo");
+    this.ctx.clearRect(0, 0, this.canvas.height, this.canvas.width);
+
+    this.addObjectsToMap(this.backgroundObjects);
+    this.addObjectsToMap(this.enemies);
+    this.addObjectsToMap(this.barriers);
+    this.addToMap(this.character);
+
+    // reuse draw
+    let self = this;
+    requestAnimationFrame(function () {
+      self.draw();
+    });
+  }
+
+  addObjectsToMap(objects) {
+    objects.forEach((o) => {
+      this.addToMap(o);
+    });
+  }
+
+  addToMap(mo) {
+    this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
   }
 }
