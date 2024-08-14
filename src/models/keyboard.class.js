@@ -1,6 +1,6 @@
 class Keyboard {
   LEFT = false;
-  RIGHT = true;
+  RIGHT = false;
   UP = false;
   DOWN = false;
   SPACE = false;

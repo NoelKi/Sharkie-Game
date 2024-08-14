@@ -1,6 +1,6 @@
 class BackgroundObjects extends DynamicObject {
   height = 480;
-  width = 1220;
+  width = 1440;
   constructor(path, x) {
     super().loadImage(path);
     this.x = x;
