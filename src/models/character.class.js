@@ -48,11 +48,13 @@ class Character extends DynamicObject {
         this.world.keyboard.LEFT
       ) {
         // swimm animation
-        let i = this.currentImage % this.IMAGES_SWIMMING.length;
-        let path = this.IMAGES_SWIMMING[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
+        this.playAnimation(this.IMAGES_SWIMMING);
       }
     }, 220);
   }
 }
+
+// let i = this.currentImage % this.IMAGES_SWIMMING.length;
+// let path = this.IMAGES_SWIMMING[i];
+// this.img = this.imageCache[path];
+// this.currentImage++;
