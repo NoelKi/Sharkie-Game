@@ -6,6 +6,21 @@ class DynamicObject {
   width = 150;
   imageCache = {};
   speed;
+  speed_Y = 0;
+  acceleration = 0.4;
+
+  applyGravity() {
+    setInterval(() => {
+      if (this.isAboveGround()) {
+        this.y -= this.speed_Y;
+        this.speed_Y -= this.acceleration;
+      }
+    }, 1000 / 25);
+  }
+
+  isAboveGround() {
+    return this.y < 300;
+  }
 
   loadImage(path) {
     this.img = new Image();

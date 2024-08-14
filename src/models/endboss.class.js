@@ -16,6 +16,28 @@ class Endboss extends DynamicObject {
     "img/2.Enemy/3 Final Enemy/2.floating/11.png",
     "img/2.Enemy/3 Final Enemy/2.floating/12.png",
   ];
+  IMAGES_ATTACK = [
+    "img/2.Enemy/3 Final Enemy/Attack/1.png",
+    "img/2.Enemy/3 Final Enemy/Attack/2.png",
+    "img/2.Enemy/3 Final Enemy/Attack/3.png",
+    "img/2.Enemy/3 Final Enemy/Attack/4.png",
+    "img/2.Enemy/3 Final Enemy/Attack/5.png",
+    "img/2.Enemy/3 Final Enemy/Attack/6.png",
+  ];
+  IMAGES_HURT = [
+    "img/2.Enemy/3 Final Enemy/Hurt/1.png",
+    "img/2.Enemy/3 Final Enemy/Hurt/2.png",
+    "img/2.Enemy/3 Final Enemy/Hurt/3.png",
+    "img/2.Enemy/3 Final Enemy/Hurt/4.png",
+  ];
+  IMAGES_DEAD = [
+    "img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 6.png",
+    "img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 7.png",
+    "img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 8.png",
+    "img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png",
+    "img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png",
+  ];
+
   currentImage = 0;
 
   constructor() {
