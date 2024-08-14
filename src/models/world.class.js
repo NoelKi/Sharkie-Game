@@ -3,6 +3,7 @@ class World {
   ctx;
   keyboard;
   character = new Character();
+  level = level1;
   enemies = level1.enemies;
   barriers = level1.barriers;
   camera_x = 0;
@@ -25,9 +26,9 @@ class World {
 
     this.ctx.translate(this.camera_x, 0);
 
-    this.addObjectsToMap(this.backgroundObjects);
-    this.addObjectsToMap(this.enemies);
-    this.addObjectsToMap(this.barriers);
+    this.addObjectsToMap(this.level.backgroundObjects);
+    this.addObjectsToMap(this.level.enemies);
+    this.addObjectsToMap(this.level.barriers);
     this.addToMap(this.character);
 
     this.ctx.translate(-this.camera_x, 0);

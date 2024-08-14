@@ -12,6 +12,8 @@ class Character extends DynamicObject {
     "img/1.Sharkie/3.Swim/6.png",
   ];
   world;
+  swimming_sound = new Audio("audio/under-water.mp3");
+
   constructor() {
     super().loadImage("img/1.Sharkie/3.Swim/1.png");
     this.loadImages(this.IMAGES_SWIMMING);
@@ -19,13 +21,16 @@ class Character extends DynamicObject {
   }
   animate() {
     setInterval(() => {
-      if (this.world.keyboard.RIGHT) {
+      // this.swimming_sound.pause();
+      if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEnd_x) {
         this.x += this.speed;
         this.otherDirection = false;
+        this.swimming_sound.play();
       }
-      if (this.world.keyboard.LEFT) {
+      if (this.world.keyboard.LEFT && this.x > 100) {
         this.x -= this.speed;
         this.otherDirection = true;
+        this.swimming_sound.play();
       }
       if (this.world.keyboard.UP) {
         this.y -= this.speed;
@@ -33,7 +38,7 @@ class Character extends DynamicObject {
       if (this.world.keyboard.DOWN) {
         this.y += this.speed;
       }
-      this.world.camera_x = -this.x;
+      this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
     setInterval(() => {
       if (
