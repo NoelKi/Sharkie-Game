@@ -11,6 +11,20 @@ class Character extends DynamicObject {
     "img/1.Sharkie/3.Swim/5.png",
     "img/1.Sharkie/3.Swim/6.png",
   ];
+  IMAGES_DEAD = [
+    "img/1.Sharkie/6.dead/1.Poisoned/1.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/2.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/3.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/4.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/5.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/6.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/7.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/8.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/9.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/10.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/11.png",
+    "img/1.Sharkie/6.dead/1.Poisoned/12.png",
+  ];
   IMAGES_IDLE = [
     "img/1.Sharkie/1.IDLE/1.png",
     "img/1.Sharkie/1.IDLE/2.png",
@@ -32,31 +46,42 @@ class Character extends DynamicObject {
     "img/1.Sharkie/1.IDLE/18.png",
   ];
   IMAGES_LONG_IDLE = [
-    "img/1.Sharkie/2.Long_IDLE/i1.png",
-    "img/1.Sharkie/2.Long_IDLE/i1.png",
-    "img/1.Sharkie/2.Long_IDLE/i2.png",
-    "img/1.Sharkie/2.Long_IDLE/i3.png",
-    "img/1.Sharkie/2.Long_IDLE/i4.png",
-    "img/1.Sharkie/2.Long_IDLE/i5.png",
-    "img/1.Sharkie/2.Long_IDLE/i6.png",
-    "img/1.Sharkie/2.Long_IDLE/i7.png",
-    "img/1.Sharkie/2.Long_IDLE/i8.png",
-    "img/1.Sharkie/2.Long_IDLE/i9.png",
-    "img/1.Sharkie/2.Long_IDLE/i10.png",
-    "img/1.Sharkie/2.Long_IDLE/i11.png",
-    "img/1.Sharkie/2.Long_IDLE/i12.png",
-    "img/1.Sharkie/2.Long_IDLE/i13.png",
-    "img/1.Sharkie/2.Long_IDLE/i14.png",
-    "img/1.Sharkie/2.Long_IDLE/i15.png",
-    "img/1.Sharkie/2.Long_IDLE/i16.png",
+    "img/1.Sharkie/2.Long_IDLE/I1.png",
+    "img/1.Sharkie/2.Long_IDLE/I1.png",
+    "img/1.Sharkie/2.Long_IDLE/I2.png",
+    "img/1.Sharkie/2.Long_IDLE/I3.png",
+    "img/1.Sharkie/2.Long_IDLE/I4.png",
+    "img/1.Sharkie/2.Long_IDLE/I5.png",
+    "img/1.Sharkie/2.Long_IDLE/I6.png",
+    "img/1.Sharkie/2.Long_IDLE/I7.png",
+    "img/1.Sharkie/2.Long_IDLE/I8.png",
+    "img/1.Sharkie/2.Long_IDLE/I9.png",
+    "img/1.Sharkie/2.Long_IDLE/I10.png",
+    "img/1.Sharkie/2.Long_IDLE/I11.png",
+    "img/1.Sharkie/2.Long_IDLE/I12.png",
+    "img/1.Sharkie/2.Long_IDLE/I13.png",
+    "img/1.Sharkie/2.Long_IDLE/I14.png",
+    "img/1.Sharkie/2.Long_IDLE/I15.png",
+    "img/1.Sharkie/2.Long_IDLE/I16.png",
   ];
+  IMAGES_HURT = [
+    "img/1.Sharkie/5.Hurt/1.Poisoned/1.png",
+    "img/1.Sharkie/5.Hurt/1.Poisoned/2.png",
+    "img/1.Sharkie/5.Hurt/1.Poisoned/3.png",
+    "img/1.Sharkie/5.Hurt/1.Poisoned/4.png",
+    "img/1.Sharkie/5.Hurt/1.Poisoned/5.png",
+  ];
+
   world;
   swimming_sound = new Audio("audio/under-water.mp3");
 
   constructor() {
-    super().loadImage(this.IMAGES_IDLE[0]);
+    super().loadImage(this.IMAGES_SWIMMING[0]);
     this.loadImages(this.IMAGES_SWIMMING);
+    this.loadImages(this.IMAGES_DEAD);
+    this.loadImages(this.IMAGES_LONG_IDLE);
     this.loadImages(this.IMAGES_IDLE);
+    this.loadImages(this.IMAGES_HURT);
 
     this.animate();
     // this.applyGravity();
@@ -67,12 +92,12 @@ class Character extends DynamicObject {
       if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEnd_x) {
         this.x += this.speed;
         this.otherDirection = false;
-        this.swimming_sound.play();
+        // this.swimming_sound.play();
       }
       if (this.world.keyboard.LEFT && this.x > 100) {
         this.x -= this.speed;
         this.otherDirection = true;
-        this.swimming_sound.play();
+        // this.swimming_sound.play();
       }
       if (this.world.keyboard.UP) {
         this.y -= this.speed;
@@ -80,10 +105,15 @@ class Character extends DynamicObject {
       if (this.world.keyboard.DOWN) {
         this.y += this.speed;
       }
+
       this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
     setInterval(() => {
-      if (
+      if (this.isDead()) {
+        this.playAnimation(this.IMAGES_DEAD);
+      } else if (this.isHurt()) {
+        this.playAnimation(this.IMAGES_HURT);
+      } else if (
         this.world.keyboard.RIGHT ||
         this.world.keyboard.UP ||
         this.world.keyboard.DOWN ||
@@ -92,6 +122,7 @@ class Character extends DynamicObject {
         // swimm animation
         this.playAnimation(this.IMAGES_SWIMMING);
       } else {
+        //
         this.playAnimation(this.IMAGES_IDLE);
       }
     }, 220);
