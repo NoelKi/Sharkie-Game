@@ -1,1 +1,1 @@
-class StaticObject {}
+class StaticObject extends DrawableObject {}

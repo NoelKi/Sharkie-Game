@@ -1,10 +1,4 @@
-class DynamicObject {
-  x = 100;
-  y = 100;
-  img;
-  height = 150;
-  width = 150;
-  imageCache = {};
+class DynamicObject extends DrawableObject {
   speed;
   speed_Y = 0;
   acceleration = 0.4;
@@ -24,47 +18,31 @@ class DynamicObject {
     return this.y < 300;
   }
 
-  loadImage(path) {
-    this.img = new Image();
-    this.img.src = path;
-  }
-
-  draw(ctx) {
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-  }
-
   drawFrame(ctx) {
+    ctx.beginPath();
+    ctx.linewidth = "1";
+    ctx.strokestyle = "blue";
     if (
-      this instanceof Character ||
       this instanceof Pufferfish ||
       this instanceof JellyFish ||
-      this instanceof Barrier
+      this instanceof Barrier ||
+      this instanceof Endboss
     ) {
-      ctx.beginPath();
-      ctx.linewidth = "1";
-      ctx.strokestyle = "blue";
       ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.stroke();
+    } else if (this instanceof Character) {
+      ctx.rect(this.x + 28, this.y + 95, this.width * 0.6, this.height * 0.3);
       ctx.stroke();
     }
   }
 
   isColliding(mo) {
     return (
-      this.x + this.width > mo.x &&
-      this.y + this.height > mo.y &&
-      this.x < mo.x &&
-      this.y < mo.y + mo.height
+      this.x + 28 + this.width * 0.6 > mo.x &&
+      this.y + 95 + this.height * 0.3 > mo.y &&
+      this.x + 28 < mo.x &&
+      this.y + 95 < mo.y + mo.height
     );
-  }
-  /**
-   * @param (Array) arr - [img/image1.png,img/image2.png,img/image3.png]
-   */
-  loadImages(arr) {
-    arr.forEach((path) => {
-      let img = new Image();
-      img.src = path;
-      this.imageCache[path] = img;
-    });
   }
 
   moveRight() {

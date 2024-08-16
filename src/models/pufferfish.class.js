@@ -32,7 +32,7 @@ class Pufferfish extends DynamicObject {
     this.y = Math.random() * 380;
     this.loadImages(this.IMAGES_SWIMMING);
     this.animate();
-    this.moveLeft(this.speed);
+    // this.moveLeft(this.speed);
   }
 
   animate() {

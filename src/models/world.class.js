@@ -6,6 +6,7 @@ class World {
   level = level1;
   enemies = level1.enemies;
   barriers = level1.barriers;
+  lifebar = new Statusbar();
   camera_x = 0;
   backgroundObjects = level1.backgroundObjects;
 
@@ -77,7 +78,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    mo.drawFrame(this.ctx);
+    // mo.drawFrame(this.ctx);
 
     if (mo.otherDirection) {
       this.flipImageBack(mo);

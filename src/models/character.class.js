@@ -61,8 +61,6 @@ class Character extends DynamicObject {
     "img/1.Sharkie/2.Long_IDLE/I12.png",
     "img/1.Sharkie/2.Long_IDLE/I13.png",
     "img/1.Sharkie/2.Long_IDLE/I14.png",
-    "img/1.Sharkie/2.Long_IDLE/I15.png",
-    "img/1.Sharkie/2.Long_IDLE/I16.png",
   ];
   IMAGES_HURT = [
     "img/1.Sharkie/5.Hurt/1.Poisoned/1.png",
