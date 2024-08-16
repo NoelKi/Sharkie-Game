@@ -6,7 +6,9 @@ class World {
   level = level1;
   enemies = level1.enemies;
   barriers = level1.barriers;
-  lifebar = new Statusbar();
+  lifebar = new Lifebar();
+  coinbar = new Coinbar();
+  poisonbar = new Poisonbar();
   camera_x = 0;
   backgroundObjects = level1.backgroundObjects;
 
@@ -24,8 +26,7 @@ class World {
       this.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
           this.character.hit();
-          // console.log("Collistion with " + enemy.constructor.name);
-          console.log(this.character.energy);
+          this.lifebar.setPercentage(this.character.energy);
         }
       });
     }, 200);
@@ -45,6 +46,9 @@ class World {
     this.addToMap(this.character);
 
     this.ctx.translate(-this.camera_x, 0);
+    this.addToMap(this.lifebar);
+    this.addToMap(this.coinbar);
+    this.addToMap(this.poisonbar);
 
     // recall draw
     let self = this;
