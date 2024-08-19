@@ -42,7 +42,7 @@ class Endboss extends DynamicObject {
 
   constructor() {
     super().loadImage(this.IMAGES_SWIMMING[0]);
-    this.x = 2000;
+    this.x = 3600;
     this.y = -150;
     this.loadImages(this.IMAGES_SWIMMING);
     this.animate();

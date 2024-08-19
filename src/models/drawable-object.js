@@ -9,6 +9,7 @@ class DrawableObject {
 
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    // console.log(this.name);
   }
 
   loadImage(path) {
@@ -43,5 +44,12 @@ class DrawableObject {
       ctx.rect(this.x + 28, this.y + 110, this.width * 0.6, this.height * 0.2);
       ctx.stroke();
     }
+  }
+
+  playAnimation(images) {
+    let i = this.currentImage % images.length;
+    let path = images[i];
+    this.img = this.imageCache[path];
+    this.currentImage++;
   }
 }

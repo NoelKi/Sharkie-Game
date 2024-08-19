@@ -18,7 +18,6 @@ class Coinbar extends Statusbar {
 
   setPercentage(percentage) {
     this.percentage = percentage;
-    console.log(this.resolveImageIndex());
     const path = this.IMAGES_COIN[this.resolveImageIndexCollectable()];
     this.img = this.imageCache[path];
   }

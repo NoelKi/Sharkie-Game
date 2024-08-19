@@ -1,5 +1,5 @@
 class Poison extends CollectableObjects {
-  IMAGES = [
+  IMAGES_FLOATING = [
     "img/4. Marcadores/Posiขn/Animada/1.png",
     "img/4. Marcadores/Posiขn/Animada/2.png",
     "img/4. Marcadores/Posiขn/Animada/3.png",
@@ -9,22 +9,28 @@ class Poison extends CollectableObjects {
     "img/4. Marcadores/Posiขn/Animada/7.png",
     "img/4. Marcadores/Posiขn/Animada/8.png",
   ];
-  IMAGE_LEFT = ["img/4. Marcadores/Posiขn/Dark - Left.png"];
-  IMAGE_RIGHT = ["img/4. Marcadores/Posiขn/Dark - Right.png"];
+  IMAGES_BOTTOM = [
+    "img/4. Marcadores/Posiขn/Dark - Left.png",
+    "img/4. Marcadores/Posiขn/Dark - Right.png",
+  ];
   currentImages = 0;
-  height = 30;
-  width = 30;
+  height = 60;
+  width = 40;
   constructor() {
-    super().loadImage(this.IMAGE_LEFT);
-    this.x = Math.random() * 300 + 600;
-    this.y = Math.random() * 380;
-    this.loadImages(this.IMAGES);
-    this.animate();
+    super().loadImage(this.IMAGES_BOTTOM[0]);
+    this.x = Math.random() * 3000 + 600;
+    this.y = Math.random() * 30 + 380;
+    // this.animate()
   }
 
   animate() {
     setInterval(() => {
       this.playAnimation(this.IMAGES);
     }, 700);
+  }
+
+  setRandomImage() {
+    index = Math.random() * 2;
+    console.log(index);
   }
 }

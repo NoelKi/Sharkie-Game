@@ -7,6 +7,7 @@ class World {
   enemies = level1.enemies;
   barriers = level1.barriers;
   coins = level1.coins;
+  poisons = level1.poisons;
   lifebar = new Lifebar();
   coinbar = new Coinbar();
   poisonbar = new Poisonbar();
@@ -18,7 +19,7 @@ class World {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
-    this.draw();
+    this.drawWorld();
     this.setWorld();
     this.run();
   }
@@ -29,8 +30,9 @@ class World {
     }, 100);
     // check collisions
     setInterval(() => {
-      this.checkCollisions();
-    }, 220);
+      this.checkEnemieCollisions();
+      this.checkCoinCollisions();
+    }, 100);
   }
 
   checkThrowObjects() {
@@ -43,20 +45,34 @@ class World {
     }
   }
 
-  checkCollisions() {
-    // Enemie Collision
+  checkEnemieCollisions() {
     this.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         this.character.hit();
         this.lifebar.setPercentage(this.character.energy);
       }
     });
-    // Coin Collision
-    this.coins.forEach((coin) => {
+  }
+
+  checkCoinCollisions() {
+    this.level.coins = this.level.coins.filter((coin) => {
       if (this.character.isColliding(coin)) {
         this.character.collect();
         this.coinbar.setPercentage(this.character.points);
+        return false; // Remove the coin from the array
       }
+      return true; // Keep the coin in the array
+    });
+  }
+
+  checkPoisonCollisions() {
+    this.level.poisons = this.level.poisons.filter((poison) => {
+      if (this.character.isColliding(poison)) {
+        this.character.collect();
+        this.coinbar.setPercentage(this.character.points);
+        return false; // Remove the coin from the array
+      }
+      return true; // Keep the coin in the array
     });
   }
 
@@ -64,8 +80,8 @@ class World {
     this.character.world = this;
   }
 
-  draw() {
-    this.ctx.clearRect(0, 0, this.canvas.height, this.canvas.width);
+  drawWorld() {
+    this.clearCanvas();
 
     this.ctx.translate(this.camera_x, 0);
 
@@ -73,6 +89,7 @@ class World {
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.barriers);
     this.addObjectsToMap(this.level.coins);
+    this.addObjectsToMap(this.level.poisons);
     this.addObjectsToMap(this.throwableObjects);
     this.addToMap(this.character);
 
@@ -84,7 +101,7 @@ class World {
     // recall draw
     let self = this;
     requestAnimationFrame(function () {
-      self.draw();
+      self.drawWorld();
     });
   }
 
@@ -118,5 +135,9 @@ class World {
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }
+  }
+
+  clearCanvas() {
+    this.ctx.clearRect(0, 0, this.canvas.height, this.canvas.width);
   }
 }
