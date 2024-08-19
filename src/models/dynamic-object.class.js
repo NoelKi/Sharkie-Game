@@ -1,7 +1,7 @@
 class DynamicObject extends DrawableObject {
   speed;
   speed_Y = 0;
-  acceleration = 0.4;
+  acceleration = -0.3;
   energy = 100;
   lastHit = 0;
   points = 0;
@@ -16,25 +16,8 @@ class DynamicObject extends DrawableObject {
   }
 
   isAboveGround() {
-    return this.y < 300;
-  }
-
-  drawFrame(ctx) {
-    ctx.beginPath();
-    ctx.linewidth = "1";
-    ctx.strokestyle = "blue";
-    if (
-      this instanceof Pufferfish ||
-      this instanceof JellyFish ||
-      this instanceof Barrier ||
-      this instanceof Endboss
-    ) {
-      ctx.rect(this.x, this.y, this.width, this.height);
-      ctx.stroke();
-    } else if (this instanceof Character) {
-      ctx.rect(this.x + 28, this.y + 95, this.width * 0.6, this.height * 0.3);
-      ctx.stroke();
-    }
+    // return this.y < 300;
+    return true;
   }
 
   isColliding(mo) {

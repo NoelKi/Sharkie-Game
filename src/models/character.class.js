@@ -11,7 +11,7 @@ class Character extends DynamicObject {
     "img/1.Sharkie/3.Swim/5.png",
     "img/1.Sharkie/3.Swim/6.png",
   ];
-  IMAGES_DEAD = [
+  IMAGES_DEAD_POISON = [
     "img/1.Sharkie/6.dead/1.Poisoned/1.png",
     "img/1.Sharkie/6.dead/1.Poisoned/2.png",
     "img/1.Sharkie/6.dead/1.Poisoned/3.png",
@@ -24,6 +24,18 @@ class Character extends DynamicObject {
     "img/1.Sharkie/6.dead/1.Poisoned/10.png",
     "img/1.Sharkie/6.dead/1.Poisoned/11.png",
     "img/1.Sharkie/6.dead/1.Poisoned/12.png",
+  ];
+  IMAGES_DEAD_ELECTRO = [
+    "img/1.Sharkie/6.dead/2.Electro_shock/1.png",
+    "img/1.Sharkie/6.dead/2.Electro_shock/2.png",
+    "img/1.Sharkie/6.dead/2.Electro_shock/3.png",
+    "img/1.Sharkie/6.dead/2.Electro_shock/4.png",
+    "img/1.Sharkie/6.dead/2.Electro_shock/5.png",
+    // "img/1.Sharkie/6.dead/2.Electro_shock/6.png",
+    "img/1.Sharkie/6.dead/2.Electro_shock/7.png",
+    "img/1.Sharkie/6.dead/2.Electro_shock/8.png",
+    "img/1.Sharkie/6.dead/2.Electro_shock/9.png",
+    "img/1.Sharkie/6.dead/2.Electro_shock/10.png",
   ];
   IMAGES_IDLE = [
     "img/1.Sharkie/1.IDLE/1.png",
@@ -67,7 +79,7 @@ class Character extends DynamicObject {
     "img/1.Sharkie/5.Hurt/1.Poisoned/2.png",
     "img/1.Sharkie/5.Hurt/1.Poisoned/3.png",
     "img/1.Sharkie/5.Hurt/1.Poisoned/4.png",
-    "img/1.Sharkie/5.Hurt/1.Poisoned/5.png",
+    // "img/1.Sharkie/5.Hurt/1.Poisoned/5.png",
   ];
   IMAGES_ATTACK_BT = [
     "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png",
@@ -79,7 +91,6 @@ class Character extends DynamicObject {
     "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png",
     "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png",
   ];
-  IMAGE_BUBBLE = ["img/1.Sharkie/4.Attack/Bubble trap/Bubble.png"];
   IMAGES_ATTACK_FS = [
     "img/1.Sharkie/4.Attack/Fin slap/1.png",
     // "img/1.Sharkie/4.Attack/Fin slap/2.png",
@@ -96,7 +107,7 @@ class Character extends DynamicObject {
   constructor() {
     super().loadImage(this.IMAGES_SWIMMING[0]);
     this.loadImages(this.IMAGES_SWIMMING);
-    this.loadImages(this.IMAGES_DEAD);
+    this.loadImages(this.IMAGES_DEAD_POISON);
     this.loadImages(this.IMAGES_LONG_IDLE);
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_HURT);
@@ -128,7 +139,7 @@ class Character extends DynamicObject {
     }, 1000 / 60);
     setInterval(() => {
       if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
+        this.playAnimation(this.IMAGES_DEAD_POISON);
       } else if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
       } else if (

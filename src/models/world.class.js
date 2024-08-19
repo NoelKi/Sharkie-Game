@@ -12,6 +12,7 @@ class World {
   poisonbar = new Poisonbar();
   camera_x = 0;
   backgroundObjects = level1.backgroundObjects;
+  throwableObjects = [new ThrowableObject()];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -19,6 +20,11 @@ class World {
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
+    this.run();
+  }
+
+  run() {
+    // check collisions
     this.checkCollisions();
   }
 
@@ -38,6 +44,7 @@ class World {
       });
     }, 200);
   }
+
   setWorld() {
     this.character.world = this;
   }
@@ -51,6 +58,7 @@ class World {
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.barriers);
     this.addObjectsToMap(this.level.coins);
+    this.addObjectsToMap(this.throwableObjects);
     this.addToMap(this.character);
 
     this.ctx.translate(-this.camera_x, 0);
@@ -90,7 +98,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    // mo.drawFrame(this.ctx);
+    mo.drawFrame(this.ctx);
 
     if (mo.otherDirection) {
       this.flipImageBack(mo);

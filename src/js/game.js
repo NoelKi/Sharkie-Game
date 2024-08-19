@@ -12,31 +12,37 @@ function init() {
 }
 
 document.onkeydown = function (e) {
-  if (e.keyCode == 37) {
+  if (e.code == "KeyD") {
+    keyboard.D = true;
+  }
+  if (e.code == "ArrowLeft") {
     keyboard.LEFT = true;
   }
-  if (e.keyCode == 38) {
+  if (e.code == "ArrowUp") {
     keyboard.UP = true;
   }
-  if (e.keyCode == 39) {
+  if (e.code == "ArrowRight") {
     keyboard.RIGHT = true;
   }
-  if (e.keyCode == 40) {
+  if (e.code == "ArrowDown") {
     keyboard.DOWN = true;
   }
 };
 
 document.onkeyup = function (e) {
-  if (e.keyCode == 37) {
+  if (e.code == "KeyD") {
+    keyboard.D = false;
+  }
+  if (e.code == "ArrowLeft") {
     keyboard.LEFT = false;
   }
-  if (e.keyCode == 38) {
+  if (e.code == "ArrowUp") {
     keyboard.UP = false;
   }
-  if (e.keyCode == 39) {
+  if (e.code == "ArrowRight") {
     keyboard.RIGHT = false;
   }
-  if (e.keyCode == 40) {
+  if (e.code == "ArrowDown") {
     keyboard.DOWN = false;
   }
 };

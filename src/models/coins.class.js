@@ -10,7 +10,7 @@ class Coins extends DynamicObject {
   width = 30;
   constructor() {
     super().loadImage(this.IMAGES[0]);
-    this.x = Math.random() * 300 + 200;
+    this.x = Math.random() * 300 + 600;
     this.y = Math.random() * 380;
     this.loadImages(this.IMAGES);
     this.animate();
