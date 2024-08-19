@@ -6,6 +6,7 @@ class World {
   level = level1;
   enemies = level1.enemies;
   barriers = level1.barriers;
+  coins = level1.coins;
   lifebar = new Lifebar();
   coinbar = new Coinbar();
   poisonbar = new Poisonbar();
@@ -29,6 +30,12 @@ class World {
           this.lifebar.setPercentage(this.character.energy);
         }
       });
+      this.coins.forEach((coin) => {
+        if (this.character.isColliding(coin)) {
+          this.character.collect();
+          this.coinbar.setPercentage(this.character.points);
+        }
+      });
     }, 200);
   }
   setWorld() {
@@ -43,6 +50,7 @@ class World {
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.barriers);
+    this.addObjectsToMap(this.level.coins);
     this.addToMap(this.character);
 
     this.ctx.translate(-this.camera_x, 0);

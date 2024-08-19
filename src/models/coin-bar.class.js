@@ -9,10 +9,17 @@ class Coinbar extends Statusbar {
   ];
   x = 10;
   y = 75;
-  percentage = 100;
+  percentage = 0;
 
   constructor() {
-    super().loadImage(this.IMAGES_COIN[5]);
+    super().loadImage(this.IMAGES_COIN[0]);
     this.loadImages(this.IMAGES_COIN);
+  }
+
+  setPercentage(percentage) {
+    this.percentage = percentage;
+    console.log(this.resolveImageIndex());
+    const path = this.IMAGES_COIN[this.resolveImageIndex()];
+    this.img = this.imageCache[path];
   }
 }

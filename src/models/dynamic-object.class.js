@@ -4,6 +4,7 @@ class DynamicObject extends DrawableObject {
   acceleration = 0.4;
   energy = 100;
   lastHit = 0;
+  points = 0;
 
   applyGravity() {
     setInterval(() => {
@@ -67,6 +68,13 @@ class DynamicObject extends DrawableObject {
     if (this.energy < 0) {
       this.energy = 0;
     } else this.lastHit = new Date().getTime();
+  }
+
+  collect() {
+    this.points += 10;
+    if (this.points > 100) {
+      this.points = 100;
+    }
   }
 
   isDead() {

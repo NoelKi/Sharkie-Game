@@ -3,17 +3,10 @@ class Statusbar extends DrawableObject {
   y = 0;
   width = 200;
   height = 60;
-  percentage = 100;
+  coin_percentage = 0;
 
   constructor() {
     super();
-  }
-
-  setPercentage(percentage) {
-    this.percentage = percentage;
-    console.log(this.resolveImageIndex());
-    const path = this.IMAGES_LIFE[this.resolveImageIndex()];
-    this.img = this.imageCache[path];
   }
 
   resolveImageIndex() {

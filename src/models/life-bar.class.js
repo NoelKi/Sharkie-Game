@@ -15,4 +15,11 @@ class Lifebar extends Statusbar {
     super().loadImage(this.IMAGES_LIFE[5]);
     this.loadImages(this.IMAGES_LIFE);
   }
+
+  setPercentage(percentage) {
+    this.percentage = percentage;
+    console.log(this.resolveImageIndex());
+    const path = this.IMAGES_LIFE[this.resolveImageIndex()];
+    this.img = this.imageCache[path];
+  }
 }
