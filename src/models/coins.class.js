@@ -13,5 +13,12 @@ class Coins extends DynamicObject {
     this.x = Math.random() * 300 + 200;
     this.y = Math.random() * 380;
     this.loadImages(this.IMAGES);
+    this.animate();
+  }
+
+  animate() {
+    setInterval(() => {
+      this.playAnimation(this.IMAGES);
+    }, 700);
   }
 }

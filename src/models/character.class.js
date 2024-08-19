@@ -69,7 +69,27 @@ class Character extends DynamicObject {
     "img/1.Sharkie/5.Hurt/1.Poisoned/4.png",
     "img/1.Sharkie/5.Hurt/1.Poisoned/5.png",
   ];
-
+  IMAGES_ATTACK_BT = [
+    "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png",
+    "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png",
+    "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png",
+    "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png",
+    "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png",
+    "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png",
+    "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png",
+    "img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png",
+  ];
+  IMAGE_BUBBLE = ["img/1.Sharkie/4.Attack/Bubble trap/Bubble.png"];
+  IMAGES_ATTACK_FS = [
+    "img/1.Sharkie/4.Attack/Fin slap/1.png",
+    // "img/1.Sharkie/4.Attack/Fin slap/2.png",
+    // "img/1.Sharkie/4.Attack/Fin slap/3.png",
+    "img/1.Sharkie/4.Attack/Fin slap/4.png",
+    "img/1.Sharkie/4.Attack/Fin slap/5.png",
+    "img/1.Sharkie/4.Attack/Fin slap/6.png",
+    "img/1.Sharkie/4.Attack/Fin slap/7.png",
+    "img/1.Sharkie/4.Attack/Fin slap/8.png",
+  ];
   world;
   swimming_sound = new Audio("audio/under-water.mp3");
 
