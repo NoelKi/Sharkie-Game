@@ -30,7 +30,7 @@ class JellyFish extends DynamicObject {
 
   constructor() {
     super().loadImage("img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png");
-    this.x = Math.random() * 300 + 200;
+    this.x = Math.random() * 2000 + 600;
     this.y = Math.random() * 380;
     this.loadImages(this.IMAGES_SWIMMING);
     this.animate();

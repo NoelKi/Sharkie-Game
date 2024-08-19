@@ -28,7 +28,7 @@ class Pufferfish extends DynamicObject {
 
   constructor() {
     super().loadImage(this.IMAGES_SWIMMING[0]);
-    this.x = Math.random() * 300 + 200;
+    this.x = Math.random() * 2000 + 600;
     this.y = Math.random() * 380;
     this.loadImages(this.IMAGES_SWIMMING);
     this.animate();
