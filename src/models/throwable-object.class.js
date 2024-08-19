@@ -5,7 +5,7 @@ class ThrowableObject extends DynamicObject {
   ];
   width = 60;
   height = 60;
-  speed_X = -3;
+  speed_X = -9;
 
   constructor(x, y) {
     super();

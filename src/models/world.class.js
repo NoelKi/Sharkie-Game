@@ -44,12 +44,14 @@ class World {
   }
 
   checkCollisions() {
+    // Enemie Collision
     this.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         this.character.hit();
         this.lifebar.setPercentage(this.character.energy);
       }
     });
+    // Coin Collision
     this.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
         this.character.collect();

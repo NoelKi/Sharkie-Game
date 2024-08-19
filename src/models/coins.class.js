@@ -21,4 +21,6 @@ class Coins extends CollectableObjects {
       this.playAnimation(this.IMAGES);
     }, 700);
   }
+
+  hideItem() {}
 }

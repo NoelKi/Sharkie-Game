@@ -15,7 +15,7 @@ class Poison extends CollectableObjects {
   height = 30;
   width = 30;
   constructor() {
-    super().loadImage(this.IMAGES[0]);
+    super().loadImage(this.IMAGE_LEFT);
     this.x = Math.random() * 300 + 600;
     this.y = Math.random() * 380;
     this.loadImages(this.IMAGES);

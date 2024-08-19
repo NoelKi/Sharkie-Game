@@ -1,7 +1,7 @@
 class DynamicObject extends DrawableObject {
   speed;
   speed_Y = 0;
-  acceleration = -0.3;
+  acceleration = -0.2;
   energy = 100;
   lastHit = 0;
   points = 0;
@@ -36,7 +36,7 @@ class DynamicObject extends DrawableObject {
   moveLeft(speed = 1) {
     setInterval(() => {
       this.x -= speed;
-    }, 1000 / 60);
+    }, 1000 / 25);
   }
 
   playAnimation(images) {
