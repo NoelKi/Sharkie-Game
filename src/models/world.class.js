@@ -27,9 +27,6 @@ class World {
   run() {
     setInterval(() => {
       this.checkThrowObjects();
-    }, 100);
-    // check collisions
-    setInterval(() => {
       this.checkEnemieCollisions();
       this.checkBarrierCollisions();
       this.checkCoinCollisions();
@@ -39,11 +36,17 @@ class World {
 
   checkThrowObjects() {
     if (this.keyboard.D) {
-      let bubble = new ThrowableObject(
-        this.character.x + 120,
-        this.character.y + 100
-      );
-      this.throwableObjects.push(bubble);
+      if (this.character.poisonCounter > 0) {
+        let bubble = new ThrowableObject(
+          this.character.x + 120,
+          this.character.y + 100
+        );
+        this.throwableObjects.push(bubble);
+
+        setTimeout(() => {
+          this.character.poisonCounter -= 1;
+        }, 50);
+      }
     }
   }
 
@@ -69,7 +72,7 @@ class World {
     this.level.coins = this.level.coins.filter((coin) => {
       if (this.character.isColliding(coin)) {
         this.character.collect();
-        this.coinbar.setPercentage(this.character.points);
+        this.coinbar.setPercentage(this.character.coinCounter);
         return false; // Remove the coin from the array
       }
       return true; // Keep the coin in the array
@@ -79,8 +82,8 @@ class World {
   checkPoisonCollisions() {
     this.level.poisons = this.level.poisons.filter((poison) => {
       if (this.character.isColliding(poison)) {
-        this.character.collect();
-        this.coinbar.setPercentage(this.character.points);
+        this.character.collectPoison();
+        this.poisonbar.setPercentage(this.character.poisonCounter);
         return false; // Remove the coin from the array
       }
       return true; // Keep the coin in the array

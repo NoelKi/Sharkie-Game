@@ -14,10 +14,10 @@ class Poison extends CollectableObjects {
     "img/4. Marcadores/Posiขn/Dark - Right.png",
   ];
   currentImages = 0;
-  height = 60;
-  width = 40;
+  height = 80;
+  width = 60;
   constructor() {
-    super().loadImage(this.IMAGES_BOTTOM[0]);
+    super().loadImage(this.IMAGES_BOTTOM[this.setRandomImage()]);
     this.x = Math.random() * 3000 + 600;
     this.y = Math.random() * 30 + 380;
     // this.animate()
@@ -30,7 +30,7 @@ class Poison extends CollectableObjects {
   }
 
   setRandomImage() {
-    index = Math.random() * 2;
-    console.log(index);
+    let index = Math.round(Math.random() * 1);
+    return index;
   }
 }

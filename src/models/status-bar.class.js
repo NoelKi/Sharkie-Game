@@ -23,15 +23,15 @@ class Statusbar extends DrawableObject {
   }
 
   resolveImageIndexCollectable() {
-    if (this.percentage == 100) {
+    if (this.percentage == 10) {
       return 5;
-    } else if (this.percentage > 70) {
+    } else if (this.percentage > 7) {
       return 4;
-    } else if (this.percentage > 50) {
+    } else if (this.percentage > 5) {
       return 3;
-    } else if (this.percentage > 30) {
+    } else if (this.percentage > 3) {
       return 2;
-    } else if (this.percentage > 10) {
+    } else if (this.percentage > 1) {
       return 1;
     } else return 0;
   }

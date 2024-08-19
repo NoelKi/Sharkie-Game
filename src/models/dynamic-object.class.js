@@ -4,7 +4,8 @@ class DynamicObject extends DrawableObject {
   acceleration = -0.2;
   energy = 100;
   lastHit = 0;
-  points = 0;
+  coinCounter = 0;
+  poisonCounter = 0;
 
   applyGravity() {
     setInterval(() => {
@@ -47,9 +48,16 @@ class DynamicObject extends DrawableObject {
   }
 
   collect() {
-    this.points += 10;
-    if (this.points > 100) {
-      this.points = 100;
+    this.coinCounter += 1;
+    if (this.coinCounter > 100) {
+      this.coinCounter = 100;
+    }
+  }
+
+  collectPoison() {
+    this.poisonCounter += 1;
+    if (this.poisonCounter > 100) {
+      this.poisonCounter = 100;
     }
   }
 
