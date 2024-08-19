@@ -6,8 +6,8 @@ class Coin extends CollectableObjects {
     "img/4. Marcadores/1. Coins/4.png",
   ];
   currentImages = 0;
-  height = 30;
-  width = 30;
+  height = 40;
+  width = 40;
   constructor(x, y) {
     super().loadImage(this.IMAGES[0]);
     this.x = x;

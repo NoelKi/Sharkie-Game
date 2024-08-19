@@ -12,7 +12,14 @@ const level1 = new Level(
     new Pufferfish(),
     new Endboss(),
   ],
-  [new Barrier()],
+  [
+    new Barrier(),
+    new Barrier(),
+    new Barrier(),
+    new Barrier(),
+    new Barrier(),
+    new Barrier(),
+  ],
   [
     new BackgroundObjects("img/3. Background/Layers/5. Water/D.png", 0),
     new BackgroundObjects("img/3. Background/Layers/3.Fondo 1/D.png", 0),

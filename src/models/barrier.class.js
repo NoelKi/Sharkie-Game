@@ -4,7 +4,7 @@ class Barrier extends DynamicObject {
   speed = 0.4 + 0.3 * Math.random();
   constructor() {
     super().loadImage("img/3. Background/Barrier/3.png");
-    this.x = Math.random() * 520 + 200;
+    this.x = Math.random() * 2800 + 500;
     this.y = Math.random() * 380;
     // this.moveLeft(this.speed);
   }

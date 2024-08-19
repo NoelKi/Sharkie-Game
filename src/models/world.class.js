@@ -31,7 +31,9 @@ class World {
     // check collisions
     setInterval(() => {
       this.checkEnemieCollisions();
+      this.checkBarrierCollisions();
       this.checkCoinCollisions();
+      this.checkPoisonCollisions();
     }, 100);
   }
 
@@ -48,6 +50,15 @@ class World {
   checkEnemieCollisions() {
     this.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
+        this.character.hit();
+        this.lifebar.setPercentage(this.character.energy);
+      }
+    });
+  }
+
+  checkBarrierCollisions() {
+    this.barriers.forEach((barrier) => {
+      if (this.character.isColliding(barrier)) {
         this.character.hit();
         this.lifebar.setPercentage(this.character.energy);
       }
@@ -86,10 +97,10 @@ class World {
     this.ctx.translate(this.camera_x, 0);
 
     this.addObjectsToMap(this.level.backgroundObjects);
-    this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.barriers);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.poisons);
+    this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.throwableObjects);
     this.addToMap(this.character);
 
@@ -104,8 +115,6 @@ class World {
       self.drawWorld();
     });
   }
-
-  update() {}
 
   addObjectsToMap(objects) {
     objects.forEach((o) => {
