@@ -12,7 +12,7 @@ class World {
   poisonbar = new Poisonbar();
   camera_x = 0;
   backgroundObjects = level1.backgroundObjects;
-  throwableObjects = [new ThrowableObject()];
+  throwableObjects = [];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -24,25 +24,38 @@ class World {
   }
 
   run() {
+    setInterval(() => {
+      this.checkThrowObjects();
+    }, 100);
     // check collisions
-    this.checkCollisions();
+    setInterval(() => {
+      this.checkCollisions();
+    }, 220);
+  }
+
+  checkThrowObjects() {
+    if (this.keyboard.D) {
+      let bubble = new ThrowableObject(
+        this.character.x + 120,
+        this.character.y + 100
+      );
+      this.throwableObjects.push(bubble);
+    }
   }
 
   checkCollisions() {
-    setInterval(() => {
-      this.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)) {
-          this.character.hit();
-          this.lifebar.setPercentage(this.character.energy);
-        }
-      });
-      this.coins.forEach((coin) => {
-        if (this.character.isColliding(coin)) {
-          this.character.collect();
-          this.coinbar.setPercentage(this.character.points);
-        }
-      });
-    }, 200);
+    this.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+        this.character.hit();
+        this.lifebar.setPercentage(this.character.energy);
+      }
+    });
+    this.coins.forEach((coin) => {
+      if (this.character.isColliding(coin)) {
+        this.character.collect();
+        this.coinbar.setPercentage(this.character.points);
+      }
+    });
   }
 
   setWorld() {

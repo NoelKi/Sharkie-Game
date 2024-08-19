@@ -6,19 +6,17 @@ class ThrowableObject extends DynamicObject {
   width = 60;
   height = 60;
   speed_X = -3;
-  constructor() {
+
+  constructor(x, y) {
     super();
-    this.x = 300;
-    this.y = 200;
+    this.x = x;
+    this.y = y;
     this.loadImage(this.IMAGE_BUBBLE);
-    this.throw(300, 200);
+    this.throw();
     this.moveLeft(this.speed_X);
   }
 
-  throw(x, y) {
-    this.x = x;
-    this.y = y;
-    // this.speed_Y;
+  throw() {
     this.applyGravity();
   }
 

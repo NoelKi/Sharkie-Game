@@ -23,9 +23,9 @@ class DynamicObject extends DrawableObject {
   isColliding(mo) {
     return (
       this.x + 28 + this.width * 0.6 > mo.x &&
-      this.y + 95 + this.height * 0.3 > mo.y &&
+      this.y + 110 + this.height * 0.2 > mo.y &&
       this.x + 28 < mo.x &&
-      this.y + 95 < mo.y + mo.height
+      this.y + 110 < mo.y + mo.height
     );
   }
 

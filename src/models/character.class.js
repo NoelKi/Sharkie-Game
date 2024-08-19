@@ -123,7 +123,7 @@ class Character extends DynamicObject {
         this.otherDirection = false;
         // this.swimming_sound.play();
       }
-      if (this.world.keyboard.LEFT && this.x > 100) {
+      if (this.world.keyboard.LEFT && this.x > 200) {
         this.x -= this.speed;
         this.otherDirection = true;
         // this.swimming_sound.play();
@@ -134,8 +134,7 @@ class Character extends DynamicObject {
       if (this.world.keyboard.DOWN) {
         this.y += this.speed;
       }
-
-      this.world.camera_x = -this.x + 100;
+      this.world.camera_x = -this.x + 200;
     }, 1000 / 60);
     setInterval(() => {
       if (this.isDead()) {

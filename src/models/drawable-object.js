@@ -2,7 +2,7 @@ class DrawableObject {
   img;
   imageCache = {};
   currentImage = 0;
-  x = 100;
+  x = 200;
   y = 100;
   height = 150;
   width = 150;
@@ -40,7 +40,7 @@ class DrawableObject {
       ctx.rect(this.x, this.y, this.width, this.height);
       ctx.stroke();
     } else if (this instanceof Character) {
-      ctx.rect(this.x + 28, this.y + 95, this.width * 0.6, this.height * 0.1);
+      ctx.rect(this.x + 28, this.y + 110, this.width * 0.6, this.height * 0.2);
       ctx.stroke();
     }
   }
