@@ -27,6 +27,9 @@ document.onkeydown = function (e) {
   if (e.code == "ArrowDown") {
     keyboard.DOWN = true;
   }
+  if (e.code == "Space") {
+    keyboard.SPACE = true;
+  }
 };
 
 document.onkeyup = function (e) {
@@ -44,5 +47,8 @@ document.onkeyup = function (e) {
   }
   if (e.code == "ArrowDown") {
     keyboard.DOWN = false;
+  }
+  if (e.code == "Space") {
+    keyboard.SPACE = false;
   }
 };
