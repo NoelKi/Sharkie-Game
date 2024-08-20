@@ -23,9 +23,37 @@ body {
     letter-spacing: 2px;
     text-shadow: 0px 1px 3px rgb(87, 0, 124);
     user-select: none;
+    overflow: hidden;
 }
 
 canvas {
     background-color: black;
 
+}
+
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100vh;
+    }
+}
+
+@media only screen and (max-height: 620px) {
+    h1 {
+        display: none;
+    }
+
+    body {
+        height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    canvas {
+        width: 100%;
+    }
+
+    h1 {
+        display: none;
+        font-size: 1em;
+    }
 }
