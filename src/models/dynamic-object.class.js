@@ -32,7 +32,9 @@ class DynamicObject extends DrawableObject {
   }
 
   moveRight() {
-    console.log("move right");
+    setInterval(() => {
+      this.x += speed;
+    }, 1000 / 25);
   }
 
   moveLeft(speed = 1) {
