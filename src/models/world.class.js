@@ -14,6 +14,7 @@ class World {
   camera_x = 0;
   backgroundObjects = level1.backgroundObjects;
   throwableObjects = [];
+  lastThrow = 0;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -35,7 +36,7 @@ class World {
   }
 
   checkThrowObjects() {
-    if (this.keyboard.D) {
+    if (this.keyboard.D && this.isThrowable()) {
       if (this.character.poisonCounter > 0) {
         let bubble = new ThrowableObject(
           this.character.x + 120,
@@ -43,10 +44,18 @@ class World {
         );
         this.throwableObjects.push(bubble);
 
-        setTimeout(() => {
-          this.character.poisonCounter -= 1;
-        }, 50);
+        this.lastThrow = new Date().getTime();
+        this.character.poisonCounter -= 1;
       }
+    }
+  }
+
+  isThrowable() {
+    let timePassed = new Date().getTime() - this.lastThrow;
+    if (timePassed > 1000) {
+      return true;
+    } else {
+      return false;
     }
   }
 
