@@ -4,6 +4,7 @@ class DynamicObject extends DrawableObject {
   acceleration = -0.2;
   energy = 100;
   lastHit = 0;
+  lastAttack = 0;
   coinCounter = 0;
   poisonCounter = 0;
 
@@ -47,6 +48,10 @@ class DynamicObject extends DrawableObject {
     } else this.lastHit = new Date().getTime();
   }
 
+  attack() {
+    this.lastAttack = new Date().getTime();
+  }
+
   collect() {
     this.coinCounter += 1;
     if (this.coinCounter > 100) {
@@ -68,6 +73,15 @@ class DynamicObject extends DrawableObject {
   isHurt() {
     let timePassed = new Date().getTime() - this.lastHit;
     if (timePassed < 500) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isAttack() {
+    let timePassed = new Date().getTime() - this.lastAttack;
+    if (timePassed < 800) {
       return true;
     } else {
       return false;
