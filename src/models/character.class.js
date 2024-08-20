@@ -135,27 +135,7 @@ class Character extends DynamicObject {
       this.fixCameraPosition();
     }, 1000 / 60);
     setInterval(() => {
-      if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD_POISON);
-      } else if (this.isHurt()) {
-        this.playAnimation(this.IMAGES_HURT);
-      } else if (this.isAttack()) {
-        console.log(this.currentAttackImage % 4);
-        this.playAnimationOnce(this.IMAGES_ATTACK_BT);
-      } else if (
-        this.world.keyboard.RIGHT ||
-        this.world.keyboard.UP ||
-        this.world.keyboard.DOWN ||
-        this.world.keyboard.LEFT
-      ) {
-        this.playAnimation(this.IMAGES_SWIMMING);
-        this.lastKeyInteract = new Date().getTime();
-      } else if (this.inactive()) {
-        this.playAnimation(this.IMAGES_LONG_IDLE);
-        this.sleeping_sound.play();
-      } else {
-        this.playAnimation(this.IMAGES_IDLE);
-      }
+      this.showAnimations();
     }, 200);
     setInterval(() => {
       if (this.world.keyboard.D) {
@@ -182,6 +162,30 @@ class Character extends DynamicObject {
     }
     if (this.world.keyboard.DOWN) {
       this.y += this.speed;
+    }
+  }
+
+  showAnimations() {
+    if (this.isDead()) {
+      this.playAnimation(this.IMAGES_DEAD_POISON);
+    } else if (this.isHurt()) {
+      this.playAnimation(this.IMAGES_HURT);
+    } else if (this.isAttack()) {
+      console.log(this.currentAttackImage % 4);
+      this.playAnimationOnce(this.IMAGES_ATTACK_BT);
+    } else if (
+      this.world.keyboard.RIGHT ||
+      this.world.keyboard.UP ||
+      this.world.keyboard.DOWN ||
+      this.world.keyboard.LEFT
+    ) {
+      this.playAnimation(this.IMAGES_SWIMMING);
+      this.lastKeyInteract = new Date().getTime();
+    } else if (this.inactive()) {
+      this.playAnimation(this.IMAGES_LONG_IDLE);
+      this.sleeping_sound.play();
+    } else {
+      this.playAnimation(this.IMAGES_IDLE);
     }
   }
 
