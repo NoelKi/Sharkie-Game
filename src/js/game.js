@@ -3,12 +3,57 @@ let world;
 let keyboard = new Keyboard();
 
 window.onload = function () {
+  // gameInstance();
   init();
 };
 
 function init() {
+  createStartScreen();
+  createBtnDiv();
+  createStartBtn();
+}
+
+function gameInstance() {
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
+}
+
+function startGame() {
+  gameInstance();
+}
+
+function createStartScreen() {
+  let canvas = document.getElementById("canvas");
+  canvas.style.display = "none";
+
+  let div = document.createElement("div");
+  div.id = "start-section";
+  div.className = "start-section";
+  document.getElementsByTagName("body")[0].appendChild(div);
+}
+
+function createBtnDiv() {
+  let container = document.createElement("div");
+  container.id = "btn-container";
+  container.className = "btn-container";
+  document.getElementsByTagName("body")[0].appendChild(container);
+}
+
+function createStartBtn() {
+  let container = document.createElement("div");
+  container.id = "start-container";
+  container.className = "start-container";
+  document.getElementById("btn-container").appendChild(container);
+
+  let btn = document.createElement("img");
+  btn.src = "img/6.Botones/Start/1.png";
+  btn.id = "start-btn";
+  btn.className = "start-btn";
+  document.getElementById("start-container").appendChild(btn);
+
+  btn.onclick = function () {
+    startGame();
+  };
 }
 
 document.onkeydown = function (e) {

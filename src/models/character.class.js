@@ -134,9 +134,11 @@ class Character extends DynamicObject {
       this.moveCharacter();
       this.fixCameraPosition();
     }, 1000 / 60);
+
     setInterval(() => {
       this.showAnimations();
     }, 200);
+
     setInterval(() => {
       if (this.world.keyboard.D) {
         this.attack();
