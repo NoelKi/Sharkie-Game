@@ -76,7 +76,8 @@ function createImpressumLink() {
   let a = document.createElement("a");
   a.className = "impressum-link";
   a.innerHTML = "Impressum";
-  document.getElementById("btn-container").appendChild(instruction);
+  a.href = "impressum.html"; // Füge den Link zum Impressum hinzu
+  document.getElementById("btn-container").appendChild(a);
 }
 
 document.onkeydown = function (e) {
