@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'LuckiestGuy';
-    src: url("img/5.Font/Luckiest_Guy/LuckiestGuy-Regular.ttf");
-}
-
 body {
     margin: 0;
     font-family: 'LuckiestGuy', sans-serif;
@@ -13,7 +8,6 @@ body {
     justify-content: center;
     background: url('img/3. Background/Layers/5. Water/D2.png') center;
     background-repeat: repeat-y;
-    background-image: linear-gradient(to right, transparent, transparent), url('img/3. Background/Layers/5. Water/D2.png');
     background-repeat: repeat;
     background-position: top center, top right;
     background-size: auto 100%, auto 100%;
@@ -23,6 +17,7 @@ body {
     letter-spacing: 2px;
     text-shadow: 0px 1px 3px rgb(87, 0, 124);
     user-select: none;
+    overflow: hidden;
 }
 
 canvas {
@@ -41,8 +36,7 @@ canvas {
     justify-content: center;
 }
 
-
-.btn-container {
+.bottom-container {
     width: 920px;
     height: 600px;
     display: flex;
@@ -100,9 +94,16 @@ canvas {
 
 }
 
-.wrap {
-    margin: 0 auto;
-    max-width: 800px;
+.gameover-section {
+    width: 920px;
+    height: 480px;
+    background-color: rgba(0, 0, 0, 0.408);
+    background-image: url('img/shark-beach.webp');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media only screen and (max-height: 480px) {
