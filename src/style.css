@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    height: 100vh;
     font-family: 'LuckiestGuy', sans-serif;
     font-size: 30px;
     display: flex;
@@ -15,16 +16,32 @@ body {
     background-attachment: fixed;
     color: rgba(73, 249, 255, 0.793);
     letter-spacing: 2px;
-    text-shadow: 0px 1px 3px rgb(87, 0, 124);
+    text-shadow:
+        1px 1px 0 hsl(280, 100%, 54%, 50%),
+        2px 2px 0 hsl(280, 100%, 54%, 50%),
+        3px 3px 0 hsl(280, 100%, 54%, 50%),
+        4px 4px 0 hsl(280, 100%, 54%, 50%),
+        5px 5px 0 hsl(280, 100%, 54%, 50%),
+        6px 6px 0 hsl(280, 100%, 54%, 50%),
+        7px 7px 0 hsl(280, 100%, 54%, 50%),
+        8px 8px 0 hsl(280, 100%, 54%, 50%),
+
+        0 0 5px rgba(0, 0, 0, .05),
+        0 1px 3px rgba(0, 0, 0, .2),
+        0 3px 5px rgba(0, 0, 0, .2),
+        0 5px 10px rgba(0, 0, 0, .2),
+        0 10px 10px rgba(0, 0, 0, .2),
+        0 20px 20px rgba(0, 0, 0, .3);
     user-select: none;
     overflow: hidden;
 }
 
 canvas {
     /* background-color: rgba(0, 0, 0, 0.512); */
+    border-radius: 16px;
 }
 
-.start-section {
+.overlay-section {
     width: 920px;
     height: 480px;
     background-color: rgba(0, 0, 0, 0.408);
@@ -45,8 +62,8 @@ canvas {
     flex-direction: column;
 }
 
-.start-container {
-    width: 300px;
+.button-container {
+    width: 400px;
     height: 100px;
     display: flex;
     align-items: center;
@@ -65,11 +82,11 @@ canvas {
     -webkit-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
-    width: 250px;
+    /* width: 250px; */
     height: 80px;
     cursor: pointer;
     user-select: none;
-    margin-top: 280px;
+    margin-top: 300px;
     transition: transform 0.2s ease-in-out;
 }
 

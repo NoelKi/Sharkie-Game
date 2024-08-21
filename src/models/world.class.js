@@ -38,21 +38,22 @@ class World {
   checkThrowObjects() {
     if (this.keyboard.D && this.isThrowable()) {
       if (this.character.poisonCounter > 0) {
-        let bubble = new ThrowableObject(
-          this.character.x + 120,
-          this.character.y + 100
-        );
-        this.throwableObjects.push(bubble);
-
         this.lastThrow = new Date().getTime();
-        this.character.poisonCounter -= 1;
+        setTimeout(() => {
+          let bubble = new ThrowableObject(
+            this.character.x + 120,
+            this.character.y + 100
+          );
+          this.throwableObjects.push(bubble);
+          this.character.poisonCounter -= 1;
+        }, 600);
       }
     }
   }
 
   isThrowable() {
     let timePassed = new Date().getTime() - this.lastThrow;
-    if (timePassed > 1000) {
+    if (timePassed > 800) {
       return true;
     } else {
       return false;

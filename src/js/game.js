@@ -1,6 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let intervalIds = [];
 
 window.onload = function () {
   // gameInstance();
@@ -21,9 +22,9 @@ function gameInstance() {
 }
 
 function startGame() {
-  const startContainer = document.getElementById("start-section");
+  const startContainer = document.getElementById("overlay-section");
   startContainer.style.display = "none";
-  let btnContainer = document.getElementById("btn-container");
+  let btnContainer = document.getElementById("bottom-container");
   btnContainer.style.display = "none";
   let canvas = document.getElementById("canvas");
   canvas.style.display = "block";
@@ -35,29 +36,29 @@ function createStartScreen() {
   canvas.style.display = "none";
 
   let div = document.createElement("div");
-  div.id = "start-section";
-  div.className = "start-section";
+  div.id = "overlay-section";
+  div.className = "overlay-section";
   document.getElementsByTagName("body")[0].appendChild(div);
 }
 
 function createBtnDiv() {
   let container = document.createElement("div");
-  container.id = "btn-container";
-  container.className = "btn-container";
+  container.id = "bottom-container";
+  container.className = "bottom-container";
   document.getElementsByTagName("body")[0].appendChild(container);
 }
 
 function createStartBtn() {
   let container = document.createElement("div");
-  container.id = "start-container";
-  container.className = "start-container";
-  document.getElementById("start-section").appendChild(container);
+  container.id = "btn-container";
+  container.className = "btn-container";
+  document.getElementById("overlay-section").appendChild(container);
 
   let btn = document.createElement("img");
   btn.src = "img/6.Botones/Start/1.png";
   btn.id = "start-btn";
   btn.className = "start-btn";
-  document.getElementById("start-container").appendChild(btn);
+  document.getElementById("btn-container").appendChild(btn);
 
   btn.onclick = function () {
     startGame();
@@ -69,7 +70,7 @@ function createInstructions() {
   instruction.src = "img/6.Botones/Instructions 1.png";
   instruction.id = "instruction";
   instruction.className = "instruction";
-  document.getElementById("btn-container").appendChild(instruction);
+  document.getElementById("bottom-container").appendChild(instruction);
 }
 
 function createImpressumLink() {
@@ -77,7 +78,27 @@ function createImpressumLink() {
   a.className = "impressum-link";
   a.innerHTML = "Impressum";
   a.href = "impressum.html"; // Füge den Link zum Impressum hinzu
-  document.getElementById("btn-container").appendChild(a);
+  document.getElementById("bottom-container").appendChild(a);
+}
+
+function createGameOverScreen() {
+  stopGame();
+  let canvas = document.getElementById("canvas");
+  canvas.style.display = "none";
+  const startContainer = document.getElementById("overlay-section");
+  startContainer.style.display = "flex";
+  let btnContainer = document.getElementById("bottom-container");
+  btnContainer.style.display = "flex";
+  let btn = document.getElementById("start-btn");
+  btn.src = "img/6.Botones/Try again/Recurso 15.png";
+}
+
+function stopGame() {
+  clearIntervals();
+}
+
+function clearIntervals() {
+  for (let i = 1; i < 100; i++) window.clearInterval(i);
 }
 
 document.onkeydown = function (e) {

@@ -11,13 +11,15 @@ class ThrowableObject extends DynamicObject {
     super();
     this.x = x;
     this.y = y;
-    this.loadImage(this.IMAGE_BUBBLE);
     this.throw();
     this.moveLeft(this.speed_X);
+    this.loadImage(this.IMAGE_BUBBLE);
   }
 
   throw() {
-    this.applyGravity();
+    setTimeout(() => {
+      this.applyGravity();
+    }, 400);
   }
 
   delete() {

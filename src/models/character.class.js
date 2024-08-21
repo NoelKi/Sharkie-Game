@@ -1,10 +1,4 @@
 class Character extends DynamicObject {
-  height = 200;
-  currentImage = 0;
-  currentAttackImage = 0;
-  speed = 8;
-  otherDirection = false;
-  lastKeyInteract = new Date().getTime();
   IMAGES_SWIMMING = [
     "img/1.Sharkie/3.Swim/1.png",
     "img/1.Sharkie/3.Swim/2.png",
@@ -103,10 +97,17 @@ class Character extends DynamicObject {
     "img/1.Sharkie/4.Attack/Fin slap/7.png",
     "img/1.Sharkie/4.Attack/Fin slap/8.png",
   ];
+  height = 200;
+  currentImage = 0;
+  currentAttackImage = 0;
+  speed = 8;
+  otherDirection = false;
+  lastKeyInteract = new Date().getTime();
   world;
   swimming_sound = new Audio("audio/under-water.mp3");
   sleeping_sound = new Audio("audio/sleeping.mp3");
   lastThrow = 0;
+
   constructor() {
     super().loadImage(this.IMAGES_SWIMMING[0]);
     this.loadImages(this.IMAGES_SWIMMING);
@@ -122,7 +123,7 @@ class Character extends DynamicObject {
 
   isThrowable() {
     let timePassed = new Date().getTime() - this.lastThrow;
-    if (timePassed > 1000) {
+    if (timePassed > 800) {
       return true;
     } else {
       return false;
@@ -159,20 +160,21 @@ class Character extends DynamicObject {
       this.otherDirection = true;
       // this.swimming_sound.play();
     }
-    if (this.world.keyboard.UP) {
+    if (this.world.keyboard.UP && this.y > -100) {
       this.y -= this.speed;
     }
-    if (this.world.keyboard.DOWN) {
+    if (this.world.keyboard.DOWN && this.y < 325) {
       this.y += this.speed;
     }
   }
 
   showAnimations() {
     if (this.isDead()) {
-      this.playAnimation(this.IMAGES_DEAD_POISON);
+      this.playDead();
     } else if (this.isHurt()) {
       this.playAnimation(this.IMAGES_HURT);
     } else if (this.isAttack()) {
+      console.log(this.currentAttackImage);
       console.log(this.currentAttackImage % 4);
       this.playAnimationOnce(this.IMAGES_ATTACK_BT);
     } else if (
@@ -203,6 +205,10 @@ class Character extends DynamicObject {
 
   playDead() {
     this.playAnimation(this.IMAGES_DEAD_POISON);
+    setTimeout(() => {
+      createGameOverScreen();
+      this.energy = 100;
+    }, 1000);
   }
 
   inactive() {
