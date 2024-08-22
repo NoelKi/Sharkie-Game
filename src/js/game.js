@@ -218,22 +218,22 @@ function addEventListenerGameBtn() {
 
   const leftBtn = document.createElement("area"); // Korrigiere dies zu <area>
   leftBtn.shape = "rect"; // Form des Bereichs
-  leftBtn.coords = "0,50,50,100"; // Koordinaten des Rechtecks
+  leftBtn.coords = "0,52,52,100"; // Koordinaten des Rechtecks
   leftBtn.alt = "Clickable leftBtn"; // Alternativtext
 
   const rightBtn = document.createElement("area"); // Korrigiere dies zu <area>
   rightBtn.shape = "rect"; // Form des Bereichs
-  rightBtn.coords = "100,50,150,100"; // Koordinaten des Rechtecks
+  rightBtn.coords = "110,50,160,100"; // Koordinaten des Rechtecks
   rightBtn.alt = "Clickable rightBtn"; // Alternativtext
 
   const upBtn = document.createElement("area"); // Korrigiere dies zu <area>
   upBtn.shape = "rect"; // Form des Bereichs
-  upBtn.coords = "50,0,100,50"; // Koordinaten des Rechtecks
+  upBtn.coords = "54,0,100,52"; // Koordinaten des Rechtecks
   upBtn.alt = "Clickable upBtn"; // Alternativtext
 
   const downBtn = document.createElement("area"); // Korrigiere dies zu <area>
   downBtn.shape = "rect"; // Form des Bereichs
-  downBtn.coords = "50,50,100,100"; // Koordinaten des Rechtecks
+  downBtn.coords = "54,54,106,100"; // Koordinaten des Rechtecks
   downBtn.alt = "Clickable downBtn"; // Alternativtext
 
   // EventListener für den linken Button

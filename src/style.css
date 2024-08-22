@@ -146,19 +146,16 @@ canvas {
 .game-btn {
     height: 100px;
     -webkit-user-drag: none;
-    /* Chrome, Safari, Opera */
-    -moz-user-drag: none;
-    /* Old versions of Firefox */
-    -o-user-drag: none;
 }
 
 .attack-btn {
     height: 45px;
     -webkit-user-drag: none;
-    /* Chrome, Safari, Opera */
-    -moz-user-drag: none;
-    /* Old versions of Firefox */
-    -o-user-drag: none;
+    cursor: pointer;
+}
+
+img[usemap] {
+    cursor: default;
 }
 
 @media only screen and (max-height: 480px) {
@@ -219,15 +216,4 @@ canvas {
         width: 30%;
         font-size: 24px;
     }
-}
-
-/* Style for the rectangle (overlay) */
-.rect-overlay {
-    position: absolute;
-    border: 2px solid red;
-    /* Color and thickness of the rectangle */
-    background-color: rgba(255, 0, 0, 0.2);
-    /* Semi-transparent background */
-    pointer-events: none;
-    /* Prevent the overlay from interfering with clicks */
 }
