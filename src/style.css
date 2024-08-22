@@ -107,12 +107,13 @@ canvas {
     text-shadow: 0px 1px 3px rgb(87, 0, 124);
     text-decoration: none;
     padding: 10px;
+    transition: transform 0.2s ease-in-out;
 }
 
 .bottom-link:hover {
     color: rgba(186, 39, 239, 0.793);
     text-shadow: 0px 1px 3px rgb(87, 0, 124);
-
+    transform: scale(1.02);
 }
 
 .gameover-section {
@@ -125,6 +126,21 @@ canvas {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.d-none {
+    display: none;
+}
+
+.bottom-btn {
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.fullscreen {
+    position: absolute;
+    width: 100vw;
 }
 
 @media only screen and (max-height: 480px) {
@@ -169,5 +185,20 @@ canvas {
 
     .start-section {
         width: 100vw;
+    }
+
+    .overlay-section {
+        width: 100vw;
+    }
+
+    .bottom-container {
+        width: 100vw;
+    }
+
+    .bottom-link {
+        width: 30%;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
     }
 }

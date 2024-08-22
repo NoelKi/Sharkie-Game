@@ -56,7 +56,9 @@ class DynamicObject extends DrawableObject {
   moveUpAndDown(speed = 1, duration = 1000) {
     let direction = 1;
     setInterval(() => {
-      this.y += speed * direction;
+      if (this.died == false) {
+        this.y += speed * direction;
+      }
     }, 1000 / 25);
     setInterval(() => {
       direction *= -1;

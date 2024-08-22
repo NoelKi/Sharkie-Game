@@ -25,11 +25,32 @@ function gameInstance() {
 function startGame() {
   const startContainer = document.getElementById("overlay-section");
   startContainer.style.display = "none";
-  let btnContainer = document.getElementById("bottom-container");
-  btnContainer.style.display = "none";
+  let bottomLinks = document.getElementsByClassName("bottom-link");
+  for (let i = 0; i < bottomLinks.length; i++) {
+    bottomLinks[i].classList.add("d-none");
+  }
+  refillBottomContainer();
   let canvas = document.getElementById("canvas");
   canvas.style.display = "block";
   gameInstance();
+}
+
+function refillBottomContainer() {
+  const bottomContainer = document.getElementById("bottom-container");
+  if (!bottomContainer.querySelector(".bottom-btn")) {
+    const fullScreenBtn = document.createElement("img");
+    fullScreenBtn.className = "bottom-btn";
+    fullScreenBtn.src = "img/6.Botones/Full Screen/Mesa de trabajo 8.png";
+    fullScreenBtn.onclick = function () {
+      fullScreen();
+    };
+    bottomContainer.appendChild(fullScreenBtn);
+  }
+}
+
+function fullScreen() {
+  canvas = document.getElementById("canvas");
+  canvas.classList.add("fullscreen");
 }
 
 function createStartScreen() {

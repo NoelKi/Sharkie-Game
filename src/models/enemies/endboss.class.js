@@ -1,6 +1,7 @@
 class Endboss extends DynamicObject {
   height = 600;
   width = 400;
+  energy = 100;
 
   IMAGES_SWIMMING = [
     "img/2.Enemy/3 Final Enemy/2.floating/1.png",
@@ -37,7 +38,18 @@ class Endboss extends DynamicObject {
     "img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png",
     "img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png",
   ];
-
+  IMAGES_SPAWN = [
+    "img/2.Enemy/3 Final Enemy/1.Introduce/1.png",
+    "img/2.Enemy/3 Final Enemy/1.Introduce/2.png",
+    "img/2.Enemy/3 Final Enemy/1.Introduce/3.png",
+    "img/2.Enemy/3 Final Enemy/1.Introduce/4.png",
+    "img/2.Enemy/3 Final Enemy/1.Introduce/5.png",
+    "img/2.Enemy/3 Final Enemy/1.Introduce/6.png",
+    "img/2.Enemy/3 Final Enemy/1.Introduce/7.png",
+    "img/2.Enemy/3 Final Enemy/1.Introduce/8.png",
+    "img/2.Enemy/3 Final Enemy/1.Introduce/9.png",
+    "img/2.Enemy/3 Final Enemy/1.Introduce/10.png",
+  ];
   currentImage = 0;
 
   constructor() {
@@ -45,12 +57,20 @@ class Endboss extends DynamicObject {
     this.x = 3600;
     this.y = -150;
     this.loadImages(this.IMAGES_SWIMMING);
+    this.loadImages(this.IMAGES_DEAD);
+    this.loadImages(this.IMAGES_HURT);
+    this.loadImages(this.IMAGES_ATTACK);
+    this.loadImages(this.IMAGES_SPAWN);
     this.animate();
   }
 
   animate() {
     setInterval(() => {
-      this.playAnimation(this.IMAGES_SWIMMING);
+      if (this.died == false) {
+        this.playAnimation(this.IMAGES_SWIMMING);
+      } else {
+        this.playAnimation(this.IMAGES_DEAD);
+      }
     }, 200);
   }
 }

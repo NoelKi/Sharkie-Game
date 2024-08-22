@@ -2,7 +2,7 @@ class JellyFish extends DynamicObject {
   height = 60;
   width = 60;
   speed_Y = 0;
-  acceleration = -0.01;
+  acceleration = -0.002;
   speed = 0.6 * Math.random() + 1;
   alternatingTime = 1000;
   speedVertical = 3;
