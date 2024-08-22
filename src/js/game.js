@@ -14,6 +14,7 @@ function init() {
   createStartBtn();
   createInstructions();
   createImpressumLink();
+  createInstructionsLink();
 }
 
 function gameInstance() {
@@ -75,9 +76,18 @@ function createInstructions() {
 
 function createImpressumLink() {
   let a = document.createElement("a");
-  a.className = "impressum-link";
+  a.className = "bottom-link";
   a.innerHTML = "Impressum";
-  a.href = "impressum.html"; // Füge den Link zum Impressum hinzu
+  a.href = "impressum.html";
+  document.getElementById("bottom-container").appendChild(a);
+}
+
+function createInstructionsLink() {
+  console.log("hallo");
+  let a = document.createElement("a");
+  a.className = "bottom-link";
+  a.innerHTML = "Instructions";
+  a.href = "instructions.html";
   document.getElementById("bottom-container").appendChild(a);
 }
 
