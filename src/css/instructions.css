@@ -28,8 +28,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 img {
     width: 80%;
+}
+
+.game-link {
+    color: white;
+    cursor: pointer;
+}
+
+.back-arrow {
+    width: 40px;
+    margin-bottom: -10px;
+    rotate: 180deg;
+    filter: invert(1);
+    text-shadow: 0px 0px 0px black;
 }
