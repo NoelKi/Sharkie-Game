@@ -22,6 +22,18 @@ function gameInstance() {
   world = new World(canvas, keyboard);
 }
 
+function showGameBtn() {
+  if (isMobileDevice()) {
+    console.log("isMobile");
+  }
+}
+
+function isMobileDevice() {
+  return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+}
+
 function startGame() {
   const startContainer = document.getElementById("overlay-section");
   startContainer.style.display = "none";

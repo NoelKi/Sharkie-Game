@@ -11,7 +11,7 @@
  */
 function checkOrientation() {
   const isLandscape = window.innerWidth < window.innerHeight;
-  const isMobile = window.innerWidth <= 932;
+  const isMobile = window.innerWidth <= 920;
   const landscapeWarningElement = document.getElementById("landscape-warning");
 
   if (landscapeWarningElement) {
@@ -34,12 +34,7 @@ function checkOrientation() {
  * @returns {void}
  */
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("landscape");
   checkOrientation();
   window.addEventListener("resize", checkOrientation);
   window.addEventListener("orientationchange", checkOrientation);
 });
-
-/* <div id="landscape-warning" class="landscape-warning">
-    Please rotate your device to portrait mode.
-</div> */
