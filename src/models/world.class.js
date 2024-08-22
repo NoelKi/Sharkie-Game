@@ -32,12 +32,14 @@ class World {
       this.checkBarrierCollisions();
       this.checkCoinCollisions();
       this.checkPoisonCollisions();
+      this.checkBubbleCollision();
     }, 100);
   }
 
   checkThrowObjects() {
     if (this.keyboard.D && this.isThrowable()) {
-      if (this.character.poisonCounter > 0) {
+      if (true) {
+        // replace true with : this.character.poisonCounter > 0
         this.lastThrow = new Date().getTime();
         setTimeout(() => {
           let bubble = new ThrowableObject(
@@ -87,6 +89,27 @@ class World {
       }
       return true; // Keep the coin in the array
     });
+  }
+
+  checkBubbleCollision() {
+    if (this.throwableObjects.length > 0) {
+      this.enemies.forEach((enemy) => {
+        // Filtere die throwableObjects und behalte nur die, die keine Kollision haben
+        this.throwableObjects = this.throwableObjects.filter(
+          (throwableObject) => {
+            if (throwableObject.isCollidingThrow(enemy)) {
+              if (enemy instanceof JellyFish || enemy instanceof Pufferfish) {
+                enemy.died = true;
+              } else {
+                enemy.die();
+              }
+              return false; // Entferne das Objekt aus dem Array
+            }
+            return true; // Behalte das Objekt im Array
+          }
+        );
+      });
+    }
   }
 
   checkPoisonCollisions() {

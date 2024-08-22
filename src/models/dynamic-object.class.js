@@ -7,6 +7,7 @@ class DynamicObject extends DrawableObject {
   lastAttack = 0;
   coinCounter = 0;
   poisonCounter = 0;
+  died = false;
 
   applyGravity() {
     setInterval(() => {
@@ -28,6 +29,15 @@ class DynamicObject extends DrawableObject {
       this.y + 110 + this.height * 0.2 > mo.y &&
       this.x + 28 < mo.x &&
       this.y + 110 < mo.y + mo.height
+    );
+  }
+
+  isCollidingThrow(mo) {
+    return (
+      this.x + this.width > mo.x &&
+      this.y + this.height > mo.y &&
+      this.x < mo.x &&
+      this.y < mo.y + mo.height
     );
   }
 
@@ -88,5 +98,9 @@ class DynamicObject extends DrawableObject {
     } else {
       return false;
     }
+  }
+
+  die() {
+    this.died = true;
   }
 }

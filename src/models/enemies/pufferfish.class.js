@@ -23,6 +23,11 @@ class Pufferfish extends DynamicObject {
     "src/img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim4.png",
     "src/img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim5.png",
   ];
+  IMAGES_DEAD = [
+    "img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.2.png",
+    "img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.3.png",
+    "img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.png",
+  ];
 
   currentImage = 0;
 
@@ -31,13 +36,18 @@ class Pufferfish extends DynamicObject {
     this.x = Math.random() * 3400 + 600;
     this.y = Math.random() * 380;
     this.loadImages(this.IMAGES_SWIMMING);
+    this.loadImages(this.IMAGES_DEAD);
     this.animate();
     // this.moveLeft(this.speed);
   }
 
   animate() {
     setInterval(() => {
-      this.playAnimation(this.IMAGES_SWIMMING);
+      if (this.died == false) {
+        this.playAnimation(this.IMAGES_SWIMMING);
+      } else {
+        this.playAnimation(this.IMAGES_DEAD);
+      }
     }, 180);
   }
 }

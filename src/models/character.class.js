@@ -174,8 +174,6 @@ class Character extends DynamicObject {
     } else if (this.isHurt()) {
       this.playAnimation(this.IMAGES_HURT);
     } else if (this.isAttack()) {
-      console.log(this.currentAttackImage);
-      console.log(this.currentAttackImage % 4);
       this.playAnimationOnce(this.IMAGES_ATTACK_BT);
     } else if (
       this.world.keyboard.RIGHT ||
@@ -187,7 +185,7 @@ class Character extends DynamicObject {
       this.lastKeyInteract = new Date().getTime();
     } else if (this.inactive()) {
       this.playAnimation(this.IMAGES_LONG_IDLE);
-      this.sleeping_sound.play();
+      // this.sleeping_sound.play();
     } else {
       this.playAnimation(this.IMAGES_IDLE);
     }

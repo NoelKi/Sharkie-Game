@@ -8,23 +8,11 @@ class JellyFish extends DynamicObject {
     "img/2.Enemy/2 Jelly fish/Regular damage/Lila 3.png",
     "img/2.Enemy/2 Jelly fish/Regular damage/Lila 4.png",
   ];
-  IMAGES_SUPERDANGER = [
-    "img/2.Enemy/2 Jelly fish/S｣per dangerous/Pink 1.png",
-    "img/2.Enemy/2 Jelly fish/S｣per dangerous/Pink 2.png",
-    "img/2.Enemy/2 Jelly fish/S｣per dangerous/Pink 3.png",
-    "img/2.Enemy/2 Jelly fish/S｣per dangerous/Pink 4.png",
-  ];
   IMAGES_DEAD_PURPLE = [
     "img/2.Enemy/2 Jelly fish/Dead/Lila/L1.png",
     "img/2.Enemy/2 Jelly fish/Dead/Lila/L2.png",
     "img/2.Enemy/2 Jelly fish/Dead/Lila/L3.png",
     "img/2.Enemy/2 Jelly fish/Dead/Lila/L4.png",
-  ];
-  IMAGES_DEAD_PINK = [
-    "img/2.Enemy/2 Jelly fish/Dead/Pink/L1.png",
-    "img/2.Enemy/2 Jelly fish/Dead/Pink/L2.png",
-    "img/2.Enemy/2 Jelly fish/Dead/Pink/L3.png",
-    "img/2.Enemy/2 Jelly fish/Dead/Pink/L4.png",
   ];
   currentImage = 0;
 
@@ -33,13 +21,18 @@ class JellyFish extends DynamicObject {
     this.x = Math.random() * 3400 + 600;
     this.y = Math.random() * 380;
     this.loadImages(this.IMAGES_SWIMMING);
+    this.loadImages(this.IMAGES_DEAD_PURPLE);
     this.animate();
     // this.moveLeft(this.speed);
   }
 
   animate() {
     setInterval(() => {
-      this.playAnimation(this.IMAGES_SWIMMING);
+      if (this.died == false) {
+        this.playAnimation(this.IMAGES_SWIMMING);
+      } else {
+        this.playAnimation(this.IMAGES_DEAD_PURPLE);
+      }
     }, 180);
   }
 }

@@ -36,7 +36,8 @@ class DrawableObject {
       this instanceof Pufferfish ||
       this instanceof JellyFish ||
       this instanceof Barrier ||
-      this instanceof Endboss
+      this instanceof Endboss ||
+      this instanceof ThrowableObject
     ) {
       ctx.rect(this.x, this.y, this.width, this.height);
       ctx.stroke();

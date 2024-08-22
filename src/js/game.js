@@ -83,7 +83,6 @@ function createImpressumLink() {
 }
 
 function createInstructionsLink() {
-  console.log("hallo");
   let a = document.createElement("a");
   a.className = "bottom-link";
   a.innerHTML = "Instructions";
