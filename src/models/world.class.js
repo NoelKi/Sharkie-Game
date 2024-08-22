@@ -65,8 +65,14 @@ class World {
   checkEnemieCollisions() {
     this.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
-        this.character.hit();
-        this.lifebar.setPercentage(this.character.energy);
+        if (enemy.died == false) {
+          if (enemy instanceof JellyFishSuper) {
+            this.character.superHit();
+          } else {
+            this.character.hit();
+          }
+          this.lifebar.setPercentage(this.character.energy);
+        }
       }
     });
   }
@@ -98,7 +104,10 @@ class World {
         this.throwableObjects = this.throwableObjects.filter(
           (throwableObject) => {
             if (throwableObject.isCollidingThrow(enemy)) {
-              if (enemy instanceof JellyFish || enemy instanceof Pufferfish) {
+              if (
+                enemy instanceof JellyFish ||
+                enemy instanceof JellyFishSuper
+              ) {
                 enemy.died = true;
               } else {
                 enemy.die();

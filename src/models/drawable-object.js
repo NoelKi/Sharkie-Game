@@ -33,7 +33,7 @@ class DrawableObject {
     ctx.linewidth = "1";
     ctx.strokestyle = "blue";
     if (
-      this instanceof Pufferfish ||
+      this instanceof JellyFishSuper ||
       this instanceof JellyFish ||
       this instanceof Barrier ||
       this instanceof Endboss ||

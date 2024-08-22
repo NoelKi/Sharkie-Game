@@ -1,7 +1,11 @@
 class JellyFish extends DynamicObject {
   height = 60;
   width = 60;
+  speed_Y = 0;
+  acceleration = -0.01;
   speed = 0.6 * Math.random() + 1;
+  alternatingTime = 1000;
+  speedVertical = 3;
   IMAGES_SWIMMING = [
     "img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png",
     "img/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png",
@@ -24,6 +28,7 @@ class JellyFish extends DynamicObject {
     this.loadImages(this.IMAGES_DEAD_PURPLE);
     this.animate();
     // this.moveLeft(this.speed);
+    this.moveUpAndDown(this.speedVertical, this.alternatingTime);
   }
 
   animate() {
@@ -32,6 +37,7 @@ class JellyFish extends DynamicObject {
         this.playAnimation(this.IMAGES_SWIMMING);
       } else {
         this.playAnimation(this.IMAGES_DEAD_PURPLE);
+        this.applyGravity();
       }
     }, 180);
   }

@@ -53,8 +53,25 @@ class DynamicObject extends DrawableObject {
     }, 1000 / 25);
   }
 
+  moveUpAndDown(speed = 1, duration = 1000) {
+    let direction = 1;
+    setInterval(() => {
+      this.y += speed * direction;
+    }, 1000 / 25);
+    setInterval(() => {
+      direction *= -1;
+    }, duration);
+  }
+
   hit() {
     this.energy -= 5;
+    if (this.energy < 0) {
+      this.energy = 0;
+    } else this.lastHit = new Date().getTime();
+  }
+
+  superHit() {
+    this.energy -= 10;
     if (this.energy < 0) {
       this.energy = 0;
     } else this.lastHit = new Date().getTime();
