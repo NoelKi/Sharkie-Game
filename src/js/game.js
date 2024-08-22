@@ -22,18 +22,6 @@ function gameInstance() {
   world = new World(canvas, keyboard);
 }
 
-function showGameBtn() {
-  if (isMobileDevice()) {
-    console.log("isMobile");
-  }
-}
-
-function isMobileDevice() {
-  return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
-}
-
 function startGame() {
   const startContainer = document.getElementById("overlay-section");
   startContainer.style.display = "none";
@@ -47,7 +35,37 @@ function startGame() {
   gameInstance();
 }
 
+function showGameBtn() {
+  const bottomContainer = document.getElementById("bottom-container");
+  if (!bottomContainer.querySelector(".game-btn")) {
+    const gameBtn = document.createElement("img");
+    gameBtn.className = "game-btn";
+    gameBtn.id = "game-btn";
+    gameBtn.src = "img/6.Botones/Key/arrow keys.png";
+    bottomContainer.appendChild(gameBtn);
+    addEventListenerGameBtn();
+  }
+}
+
+function showAttackBtn() {
+  const bottomContainer = document.getElementById("bottom-container");
+  if (!bottomContainer.querySelector(".attack-btn")) {
+    const gameBtn = document.createElement("img");
+    gameBtn.className = "attack-btn";
+    gameBtn.id = "attack-btn";
+    gameBtn.src = "img/6.Botones/Key/D key.png";
+    bottomContainer.appendChild(gameBtn);
+    addEventListenerAttackBtn();
+  }
+}
+
 function refillBottomContainer() {
+  showGameBtn();
+  showFullScreenBtn();
+  showAttackBtn();
+}
+
+function showFullScreenBtn() {
   const bottomContainer = document.getElementById("bottom-container");
   if (!bottomContainer.querySelector(".bottom-btn")) {
     const fullScreenBtn = document.createElement("img");
@@ -184,3 +202,92 @@ document.onkeyup = function (e) {
     keyboard.SPACE = false;
   }
 };
+
+function addEventListenerAttackBtn() {
+  document.getElementById("attack-btn").addEventListener("click", function () {
+    keyboard.D = true;
+    setTimeout(() => {
+      keyboard.D = false;
+    }, 200);
+  });
+}
+
+function addEventListenerGameBtn() {
+  const imageMap = document.createElement("map");
+  imageMap.name = "dynamic-map";
+
+  const leftBtn = document.createElement("area"); // Korrigiere dies zu <area>
+  leftBtn.shape = "rect"; // Form des Bereichs
+  leftBtn.coords = "0,50,50,100"; // Koordinaten des Rechtecks
+  leftBtn.alt = "Clickable leftBtn"; // Alternativtext
+
+  const rightBtn = document.createElement("area"); // Korrigiere dies zu <area>
+  rightBtn.shape = "rect"; // Form des Bereichs
+  rightBtn.coords = "100,50,150,100"; // Koordinaten des Rechtecks
+  rightBtn.alt = "Clickable rightBtn"; // Alternativtext
+
+  const upBtn = document.createElement("area"); // Korrigiere dies zu <area>
+  upBtn.shape = "rect"; // Form des Bereichs
+  upBtn.coords = "50,0,100,50"; // Koordinaten des Rechtecks
+  upBtn.alt = "Clickable upBtn"; // Alternativtext
+
+  const downBtn = document.createElement("area"); // Korrigiere dies zu <area>
+  downBtn.shape = "rect"; // Form des Bereichs
+  downBtn.coords = "50,50,100,100"; // Koordinaten des Rechtecks
+  downBtn.alt = "Clickable downBtn"; // Alternativtext
+
+  // EventListener für den linken Button
+  leftBtn.addEventListener("mousedown", function () {
+    keyboard.LEFT = true; // 'LEFT' für nach links bewegen
+  });
+  leftBtn.addEventListener("mouseup", function () {
+    keyboard.LEFT = false; // Stoppt die Bewegung nach links
+  });
+  leftBtn.addEventListener("mouseleave", function () {
+    keyboard.LEFT = false; // Stoppt die Bewegung, wenn der Cursor das Feld verlässt
+  });
+
+  // EventListener für den rechten Button
+  rightBtn.addEventListener("mousedown", function () {
+    keyboard.RIGHT = true; // 'RIGHT' für nach rechts bewegen
+  });
+  rightBtn.addEventListener("mouseup", function () {
+    keyboard.RIGHT = false; // Stoppt die Bewegung nach rechts
+  });
+  rightBtn.addEventListener("mouseleave", function () {
+    keyboard.RIGHT = false; // Stoppt die Bewegung, wenn der Cursor das Feld verlässt
+  });
+
+  // EventListener für den oberen Button
+  upBtn.addEventListener("mousedown", function () {
+    keyboard.UP = true; // 'UP' für nach oben bewegen
+  });
+  upBtn.addEventListener("mouseup", function () {
+    keyboard.UP = false; // Stoppt die Bewegung nach oben
+  });
+  upBtn.addEventListener("mouseleave", function () {
+    keyboard.UP = false; // Stoppt die Bewegung, wenn der Cursor das Feld verlässt
+  });
+
+  // EventListener für den unteren Button
+  downBtn.addEventListener("mousedown", function () {
+    keyboard.DOWN = true; // 'DOWN' für nach unten bewegen
+  });
+  downBtn.addEventListener("mouseup", function () {
+    keyboard.DOWN = false; // Stoppt die Bewegung nach unten
+  });
+  downBtn.addEventListener("mouseleave", function () {
+    keyboard.DOWN = false; // Stoppt die Bewegung, wenn der Cursor das Feld verlässt
+  });
+
+  // Füge das Area zur Map hinzu
+  imageMap.appendChild(leftBtn);
+  imageMap.appendChild(leftBtn);
+  imageMap.appendChild(rightBtn);
+  imageMap.appendChild(upBtn);
+  imageMap.appendChild(downBtn);
+
+  // Füge die Map zum Body (oder einem anderen Container) hinzu
+  document.getElementById("game-btn").useMap = "#dynamic-map"; // Verknüpfe die Map mit dem Bild
+  document.body.appendChild(imageMap); // Füge die Map zum Body hinzu oder in einen anderen Container
+}
