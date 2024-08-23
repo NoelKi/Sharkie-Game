@@ -15,6 +15,7 @@ class World {
   backgroundObjects = level1.backgroundObjects;
   throwableObjects = [];
   lastThrow = 0;
+  finalBossSpawn = false;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -23,6 +24,7 @@ class World {
     this.drawWorld();
     this.setWorld();
     this.run();
+    this.finalBossSpawn_X();
   }
 
   run() {
@@ -111,7 +113,6 @@ class World {
                 enemy.die();
               } else if (enemy instanceof Endboss) {
                 enemy.finalBossHit();
-                console.log("hit final");
               }
               return false; // Entferne das Objekt aus dem Array
             }
@@ -131,6 +132,17 @@ class World {
       }
       return true; // Keep the coin in the array
     });
+  }
+
+  finalBossSpawn_X() {
+    setInterval(() => {
+      if (this.character.x == 200) {
+        if (this.enemies[10].spawnBoss == false) {
+          this.enemies[10].spawn();
+          this.enemies[10].spawnBoss = true;
+        }
+      }
+    }, 100);
   }
 
   setWorld() {

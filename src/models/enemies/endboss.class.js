@@ -2,7 +2,9 @@ class Endboss extends DynamicObject {
   height = 600;
   width = 400;
   energy = 40;
-  speed = Math.random() * 4;
+  speed = Math.random() * 3;
+  spawnBoss = false;
+
   IMAGES_SWIMMING = [
     "img/2.Enemy/3 Final Enemy/2.floating/1.png",
     "img/2.Enemy/3 Final Enemy/2.floating/2.png",
@@ -53,9 +55,10 @@ class Endboss extends DynamicObject {
   currentImage = 0;
 
   constructor() {
-    super().loadImage(this.IMAGES_SWIMMING[0]);
-    this.x = 3600;
-    this.y = -150;
+    super().loadImage(this.IMAGES_SPAWN[0]);
+    // this.x = 3600;
+    this.x = 600;
+    this.y = -110;
     this.loadImages(this.IMAGES_SWIMMING);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_HURT);
@@ -66,14 +69,18 @@ class Endboss extends DynamicObject {
 
   animate() {
     setInterval(() => {
-      if (this.finalBossIsHurt()) {
-        this.playAnimation(this.IMAGES_ATTACK);
-        this.moveSomeLeft(this.speed);
-        console.log("attack");
-      } else if (this.energy == 0) {
-        this.playAnimation(this.IMAGES_DEAD);
-      } else {
-        this.playAnimation(this.IMAGES_SWIMMING);
+      if (this.spawnBoss == true) {
+        if (this.finalBossIsHurt()) {
+          this.playAnimation(this.IMAGES_ATTACK);
+          this.moveLeft(0.5);
+          this.moveSomeLeft(this.speed);
+        } else if (this.energy == 0) {
+          this.playAnimation(this.IMAGES_DEAD);
+        } else if (this.isSpawn()) {
+          this.playAnimation(this.IMAGES_SPAWN);
+        } else {
+          this.playAnimation(this.IMAGES_SWIMMING);
+        }
       }
     }, 200);
   }

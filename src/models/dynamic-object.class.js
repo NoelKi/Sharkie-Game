@@ -9,6 +9,7 @@ class DynamicObject extends DrawableObject {
   coinCounter = 0;
   poisonCounter = 0;
   died = false;
+  thisSpawn = 0;
 
   applyGravity() {
     setInterval(() => {
@@ -102,6 +103,10 @@ class DynamicObject extends DrawableObject {
     this.lastAttack = new Date().getTime();
   }
 
+  spawn() {
+    this.thisSpawn = new Date().getTime();
+  }
+
   collect() {
     this.coinCounter += 1;
     if (this.coinCounter > 100) {
@@ -123,6 +128,15 @@ class DynamicObject extends DrawableObject {
   isHurt() {
     let timePassed = new Date().getTime() - this.lastHit;
     if (timePassed < 500) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isSpawn() {
+    let timePassed = new Date().getTime() - this.thisSpawn;
+    if (timePassed < 2000) {
       return true;
     } else {
       return false;
