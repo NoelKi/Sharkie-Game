@@ -158,8 +158,24 @@ function stopGame() {
 }
 
 function clearIntervals() {
-  for (let i = 1; i < 100; i++) window.clearInterval(i);
+  for (let i = 1; i < 52; i++) window.clearInterval(i);
 }
+
+// function setStoppableInterval(fn, time) {
+//   let intervalId = setInterval(fn, time);
+//   intervalIds.push(intervalId);
+// }
+
+// function clearIntervalsStoppable() {
+//   for (let i = 0; i < intervalIds.length; i++) {
+//     const id = intervalIds[i];
+//     clearIntervals(id);
+//   }
+// }
+
+// let a = setInterval(() => {
+//   console.log("a");
+// }, 1000);
 
 document.onkeydown = function (e) {
   if (e.code == "KeyD") {

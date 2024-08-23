@@ -135,11 +135,12 @@ class World {
   }
 
   finalBossSpawn_X() {
+    let finalBoss = this.enemies[10];
     setInterval(() => {
-      if (this.character.x == 200) {
-        if (this.enemies[10].spawnBoss == false) {
-          this.enemies[10].spawn();
-          this.enemies[10].spawnBoss = true;
+      if (this.character.x > 2850 && !finalBoss.spawnBoss) {
+        if (!finalBoss.spawnBoss) {
+          finalBoss.spawn();
+          finalBoss.spawnBoss = true;
         }
       }
     }, 100);
