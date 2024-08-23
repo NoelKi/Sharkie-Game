@@ -11,7 +11,7 @@
  */
 function checkOrientation() {
   const isLandscape = window.innerWidth < window.innerHeight;
-  const isMobile = window.innerWidth <= 920;
+  const isMobile = window.innerWidth <= 932;
   const landscapeWarningElement = document.getElementById("landscape-warning");
 
   if (landscapeWarningElement) {

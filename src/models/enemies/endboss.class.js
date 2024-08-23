@@ -1,8 +1,8 @@
 class Endboss extends DynamicObject {
   height = 600;
   width = 400;
-  energy = 100;
-
+  energy = 40;
+  speed = Math.random() * 4;
   IMAGES_SWIMMING = [
     "img/2.Enemy/3 Final Enemy/2.floating/1.png",
     "img/2.Enemy/3 Final Enemy/2.floating/2.png",
@@ -66,10 +66,14 @@ class Endboss extends DynamicObject {
 
   animate() {
     setInterval(() => {
-      if (this.died == false) {
-        this.playAnimation(this.IMAGES_SWIMMING);
-      } else {
+      if (this.finalBossIsHurt()) {
+        this.playAnimation(this.IMAGES_ATTACK);
+        this.moveSomeLeft(this.speed);
+        console.log("attack");
+      } else if (this.energy == 0) {
         this.playAnimation(this.IMAGES_DEAD);
+      } else {
+        this.playAnimation(this.IMAGES_SWIMMING);
       }
     }, 200);
   }

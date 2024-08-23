@@ -4,6 +4,7 @@ class DynamicObject extends DrawableObject {
   acceleration = -0.2;
   energy = 100;
   lastHit = 0;
+  lastHitFinalBoss = 0;
   lastAttack = 0;
   coinCounter = 0;
   poisonCounter = 0;
@@ -53,6 +54,16 @@ class DynamicObject extends DrawableObject {
     }, 1000 / 25);
   }
 
+  moveSomeLeft(speed = 1) {
+    let stopper = 1;
+    setInterval(() => {
+      this.x -= speed * stopper;
+    }, 1000 / 25);
+    setInterval(() => {
+      stopper = 0;
+    }, 1000);
+  }
+
   moveUpAndDown(speed = 1, duration = 1000) {
     let direction = 1;
     setInterval(() => {
@@ -77,6 +88,14 @@ class DynamicObject extends DrawableObject {
     if (this.energy < 0) {
       this.energy = 0;
     } else this.lastHit = new Date().getTime();
+  }
+
+  finalBossHit() {
+    this.energy -= 10;
+    if (this.energy < 0) {
+      this.energy = 0;
+    } else this.lastHitFinalBoss = new Date().getTime();
+    console.log(this.lastHitFinalBoss);
   }
 
   attack() {
@@ -121,5 +140,14 @@ class DynamicObject extends DrawableObject {
 
   die() {
     this.died = true;
+  }
+
+  finalBossIsHurt() {
+    let timePassed = new Date().getTime() - this.lastHitFinalBoss;
+    if (timePassed < 2000) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

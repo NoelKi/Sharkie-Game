@@ -108,9 +108,10 @@ class World {
                 enemy instanceof JellyFish ||
                 enemy instanceof JellyFishSuper
               ) {
-                enemy.died = true;
-              } else {
                 enemy.die();
+              } else if (enemy instanceof Endboss) {
+                enemy.finalBossHit();
+                console.log("hit final");
               }
               return false; // Entferne das Objekt aus dem Array
             }
